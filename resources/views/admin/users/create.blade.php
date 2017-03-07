@@ -3,9 +3,14 @@
 @section("title","Crear Usuario")
 
 @section("content")
+
+@include("admin.partials.errors")
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			{{ Form::open(['action' => 'UsersController@store',"method"=>"POST"]) }}
+			<div class="panel panel-default">
+			  <div class="panel-heading">@yield('title')</div>
+			  <div class="panel-body">
+			{{ Form::open(['route' => 'users.store',"method"=>"POST"]) }}
 
 				<div class="form-group">
 					{{Form::label('name','Nombre')}}
@@ -31,6 +36,8 @@
 					{{Form::submit('Crear',['class'=>'btn btn-success']) }}
 				</div>
 			{{ Form::close() }}
+				</div>
+			</div>
 		</div>
 	</div>
 @endsection

@@ -4,17 +4,17 @@
 
 @section('content')
 <div class="panel panel-default">
-  <div class="panel-heading">Usuarios</div>
+  <div class="panel-heading">@yield('title')</div>
   <div class="panel-body">
    
-   	<a href="{{action('UsersController@create')}}" class="pull-right btn btn-success"><i class="fa fa-plus"></i></a>
+   	<a href="{{route('users.create')}}" class="pull-right btn btn-success"><i class="fa fa-plus"></i></a>
 	<table class="table table-striped">
 		<thead>
 			<tr><th>#</th>
 				<th>Nombre</th>
 				<th>Email</th>
 				<th>Type</th>
-				<th>Actions</th>
+				<th colspan="2">Actions</th>
 			</tr>
 		</thead>
 
@@ -31,8 +31,12 @@
 						<span class="label label-primary">{{$user->type}}</span>
 					@endif
 				</td>
-				<td><a href="#" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-					<a href="#" class="btn btn-danger"><i class="fa fa-trash"></i></a></td>
+				<td>
+					<a href="{{route('users.edit',$user->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+					</td>
+					<td>
+						@include("admin.users.delete",['id'=>$user->id])
+					</td>
 			</tr>
 			@endforeach
 		</tbody>
