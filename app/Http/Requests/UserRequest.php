@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
 
 class UserRequest extends FormRequest
 {
@@ -23,10 +24,36 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'=>'required|min:4|max:120',
-            'email'=>'min:4|max:250|required|unique:users',
-            'password'=>'min:4|max:120|required'
-        ];
+        $user = User::find($this->user);
+
+
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'name'     => 'min:5|max:100|required',
+                    'email'    => 'min:10|max:120|required|email|unique:users',
+                    'password' => 'min:8|max:20|required|confirmed',
+                    'type'     => 'required'
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                    'name'     => 'min:5|max:100|required',
+                    'email'    => 'min:10|max:120|required|email|unique:users,email,'.$user->id,
+                    'password' => 'min:8|max:20|confirmed',
+                    'type'     => 'required'
+                ];
+            }
+            default:break;
+        }
     }
 }

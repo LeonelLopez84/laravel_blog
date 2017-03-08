@@ -12,7 +12,6 @@
 		<thead>
 			<tr><th>#</th>
 				<th>Nombre</th>
-				
 				<th colspan="2">Actions</th>
 			</tr>
 		</thead>
@@ -22,7 +21,6 @@
 			<tr>
 				<td>{{$category->id}}</td>
 				<td>{{$category->name}}</td>
-				<td>{{$category->email}}</td>
 				<td>
 					@if($category->type=="admin")
 						<span class="label label-danger">{{$category->type}}</span>

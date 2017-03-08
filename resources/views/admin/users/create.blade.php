@@ -28,11 +28,16 @@
 				</div>
 
 				<div class="form-group">
-					{{Form::label('type','Tipo')}}
-					{{Form::select('type',['0'=>'Selecciona','member'=>'Miembro','admin'=>'Administrador'],null,['class'=>'form-control']) }}
+					{{Form::label('password_confirmation','Confirmar Contraseña')}}
+					{{Form::password('password_confirmation', ['class'=>'form-control','placeholder'=>'***********','required'] ) }}
 				</div>
 
 				<div class="form-group">
+					{{Form::label('type','Tipo')}}
+					{{Form::select('type',[''=>'Selecciona...','member'=>'Miembro','admin'=>'Administrador'],null,['class'=>'form-control']) }}
+				</div>
+
+				<div class="form-group pull-right">
 					{{Form::submit('Crear',['class'=>'btn btn-success']) }}
 				</div>
 			{{ Form::close() }}

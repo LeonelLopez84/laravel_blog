@@ -3,6 +3,9 @@
 @section("title","Editar Usuario ".$user->name)
 
 @section("content")
+
+@include("admin.partials.errors")
+
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
 			<div class="panel panel-default">
@@ -26,8 +29,13 @@
 				</div>
 
 				<div class="form-group">
+					{{Form::label('password_confirmation','Confirmar Contraseña')}}
+					{{Form::password('password_confirmation', ['class'=>'form-control','placeholder'=>'***********'] ) }}
+				</div>
+
+				<div class="form-group">
 					{{Form::label('type','Tipo')}}
-					{{Form::select('type',['0'=>'Selecciona','member'=>'Miembro','admin'=>'Administrador'],$user->type,['class'=>'form-control']) }}
+					{{Form::select('type',[''=>'Selecciona...','member'=>'Miembro','admin'=>'Administrador'],$user->type,['class'=>'form-control']) }}
 				</div>
 
 				<div class="form-group pull-right">
