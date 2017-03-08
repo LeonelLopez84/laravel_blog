@@ -12,14 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+    	return view('welcome');
+	});
 
 Route::group(['prefix'=>'admin'],function(){
+
+	Auth::routes();
+
+	Route::get('/', function () {
+    	return view('admin.welcome');
+	});
+
+	Route::get('/home', 'HomeController@index');
 
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');

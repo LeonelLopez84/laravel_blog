@@ -1,4 +1,4 @@
-@extends("layouts.admin")
+@extends("admin.layouts.panel")
 
 @section('title')
 	Inicio de la página

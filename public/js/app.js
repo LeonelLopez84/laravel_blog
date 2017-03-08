@@ -61,16 +61,14 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 12:
+/******/ ([
+/* 0 */
 /***/ function(module, exports) {
 
-eval("$(document).on('submit', '#delete-form', function(event) {\n\treturn confirm(\"¿Desea borrar el dato?\");\n});//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMTIuanMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vcmVzb3VyY2VzL2Fzc2V0cy9qcy9hcHAuanM/OGI2NyJdLCJzb3VyY2VzQ29udGVudCI6WyIkKGRvY3VtZW50KS5vbignc3VibWl0JywgJyNkZWxldGUtZm9ybScsIGZ1bmN0aW9uKGV2ZW50KSB7XG5cdHJldHVybiBjb25maXJtKFwiwr9EZXNlYSBib3JyYXIgZWwgZGF0bz9cIik7XG59KTtcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gcmVzb3VyY2VzL2Fzc2V0cy9qcy9hcHAuanMiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==");
+eval("$(document).on('submit', '#delete-form', function(event) {\n\treturn confirm(\"¿Desea borrar el dato?\");\n});//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9yZXNvdXJjZXMvYXNzZXRzL2pzL2FwcC5qcz84YjY3Il0sInNvdXJjZXNDb250ZW50IjpbIiQoZG9jdW1lbnQpLm9uKCdzdWJtaXQnLCAnI2RlbGV0ZS1mb3JtJywgZnVuY3Rpb24oZXZlbnQpIHtcblx0cmV0dXJuIGNvbmZpcm0oXCLCv0Rlc2VhIGJvcnJhciBlbCBkYXRvP1wiKTtcbn0pO1xuXG5cbi8vIFdFQlBBQ0sgRk9PVEVSIC8vXG4vLyByZXNvdXJjZXMvYXNzZXRzL2pzL2FwcC5qcyJdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9");
 
 /***/ }
-
-/******/ });
+/******/ ]);

@@ -20,8 +20,8 @@ class AddArticlesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('no action')->onUpdate('no action');
 
             $table->timestamps();
         });
