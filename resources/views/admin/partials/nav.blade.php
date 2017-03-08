@@ -30,6 +30,13 @@
             <li><a href="{{route('categories.create')}}">Crear</a></li>
           </ul>
         </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tags<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{route('tags.index')}}">Todas</a></li>
+            <li><a href="{{route('tags.create')}}">Crear</a></li>
+          </ul>
+        </li>
       </ul>
       <form class="navbar-form navbar-left">
         <div class="form-group">
