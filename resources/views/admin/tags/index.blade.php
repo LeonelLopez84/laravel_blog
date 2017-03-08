@@ -7,7 +7,16 @@
   <div class="panel-heading">@yield('title')</div>
   <div class="panel-body">
    
-   	<a href="{{route('tags.create')}}" class="pull-right btn btn-success"><i class="fa fa-plus"></i></a>
+   	<a href="{{route('tags.create')}}" class="pull-left btn btn-success"><i class="fa fa-plus"></i></a>
+
+   	{{ Form::open(['route'=>'tags.index','method'=>'GET','class'=>'navbar-form pull-right']) }}
+   		<div class="input-group">
+   			{{Form::text('name',$name,['class'=>'form-control','placeholder'=>'Buscar tag'])}}
+   			<span class="input-group-btn">
+   				{{Form::submit('Buscar',['class'=>'btn btn-default']) }}
+      		</span>
+   		</div>
+   	{{Form::close()}}
 	<table class="table table-striped">
 		<thead>
 			<tr><th>#</th>
