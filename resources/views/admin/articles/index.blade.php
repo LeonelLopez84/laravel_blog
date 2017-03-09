@@ -12,6 +12,7 @@
 		<thead>
 			<tr><th>#</th>
 				<th>Nombre</th>
+				<th>Categoría</th>
 				<th colspan="2">Actions</th>
 			</tr>
 		</thead>
@@ -21,6 +22,7 @@
 			<tr>
 				<td>{{$article->id}}</td>
 				<td>{{$article->title}}</td>
+				<td>{{$article->category->name}}</td>
 				<td>
 					@if($article->type=="admin")
 						<span class="label label-danger">{{$article->type}}</span>

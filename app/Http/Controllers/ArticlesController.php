@@ -90,16 +90,26 @@ class ArticlesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article=Article::find($id);
+        $tags=Tag::orderBy('name','ASC')->pluck('name','id');
+        $categories=Category::orderBy('name','ASC')->pluck('name','id');
+        $selected_tags=$article->tags->pluck('id')->toArray();
+
+        return view('admin.articles.edit')
+                ->with('article',$article)
+                ->with('categories',$categories)
+                ->with('tags',$tags)
+                ->with('selected_tags',$selected_tags);
     }
 
-    /**
+    /*
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         //

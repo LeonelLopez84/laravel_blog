@@ -30,7 +30,7 @@
 
 				<div class="form-group">
 					{{Form::label('tags','Tag')}}
-					{{Form::select('tags[]',$tags, null,['class'=>'form-control','placeholder'=>'Seleccione una opción','multiple','required'] ) }}
+					{{Form::select('tags[]',$tags, null,['class'=>'form-control select-tag','multiple','required'] ) }}
 				</div>
 
 				<div class="form-group">
