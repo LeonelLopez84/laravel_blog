@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Category;
 
 class CategoryRequest extends FormRequest
 {
@@ -23,8 +24,30 @@ class CategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name'=>'max:120|required|unique:categories'
-        ];
+        $category= Category::find($this->category);
+
+
+        switch($this->method())
+        {
+            case 'GET':
+            case 'DELETE':
+            {
+                return [];
+            }
+            case 'POST':
+            {
+                return [
+                    'name'=>'min:5|required|unique:categories'
+                ];
+            }
+            case 'PUT':
+            case 'PATCH':
+            {
+                return [
+                   'name'=> 'min:5|required|unique:categories,name,'.$category->id,
+                ];
+            }
+            default:break;
+        }
     }
 }

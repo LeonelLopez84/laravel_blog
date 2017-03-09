@@ -23,10 +23,12 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        $articles=Article::orderBy('title','ASC')->paginate(15);
-        return view('admin.articles.index')->with('articles',$articles);
+        $articles=Article::search($request->title)->orderBy('title','ASC')->paginate(15);
+        return view('admin.articles.index')
+                ->with('articles',$articles)
+                ->with('title',$request->title);
     }
     
     /**
@@ -47,28 +49,29 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
+
+        $article = new Article($request->all());
+        $article->user_id= \Auth::user()->id;
+        $article->save();
+
+        $article->tags()->sync($request->tags);
+
         if($request->file("image")){
 
             $file = $request->file("image");
             $name = 'blog_'.time().'.'.$file->getClientOriginalExtension();
             $path = $request->file('image')->storeAs('images',$name);
 
-            $article = new Article($request->all());
-            $article->user_id= \Auth::user()->id;
-            $article->save();
-
-            $article->tags()->sync($request->tags);
-
             $image= new Image();
             $image->name = $name ;
             $image->article()->associate($article);
         }
 
-        Flash::success("Se ha creado el articulo <b>$article->name</b>");
+        Flash::success("Se ha creado el articulo <b>$article->title</b>");
 
-        return redirect()->route('tags.index');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -110,9 +113,30 @@ class ArticlesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
-        //
+
+        $article =Article::find($id);
+        $article->fill($request->all());
+        $article->user_id = \Auth::user()->id;
+        $article->save();
+
+        $article->tags()->sync($request->tags);
+
+        if($request->file("image")){
+
+            $file = $request->file("image");
+            $name = 'blog_'.time().'.'.$file->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs('images',$name);
+        
+            $image= new Image();
+            $image->name = $name ;
+            $image->article()->associate($article);
+        }
+        
+        Flash::success("Se ha actualizado el articulo <b>$article->title</b>");
+
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -123,6 +147,9 @@ class ArticlesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article=Article::find($id);
+        $article->delete();
+        Flash::error('El articulo <b>'.$article->title.'</b> ha sido borrado');
+        return redirect()->route('articles.index');
     }
 }

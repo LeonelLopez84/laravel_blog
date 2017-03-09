@@ -7,12 +7,22 @@
   <div class="panel-heading">@yield('title')</div>
   <div class="panel-body">
    
-   	<a href="{{route('articles.create')}}" class="pull-right btn btn-success"><i class="fa fa-plus"></i></a>
+   	<a href="{{route('articles.create')}}" class="pull-left btn btn-success"><i class="fa fa-plus"></i></a>
+
+   	{{ Form::open(['route'=>'articles.index','method'=>'GET','class'=>'navbar-form pull-right']) }}
+   		<div class="input-group">
+   			{{Form::text('title',$title,['class'=>'form-control','placeholder'=>'Buscar tag'])}}
+   			<span class="input-group-btn">
+   				{{Form::submit('Buscar',['class'=>'btn btn-default']) }}
+      		</span>
+   		</div>
+   	{{Form::close()}}
 	<table class="table table-striped">
 		<thead>
 			<tr><th>#</th>
 				<th>Nombre</th>
 				<th>Categoría</th>
+				<th>User</th>
 				<th colspan="2">Actions</th>
 			</tr>
 		</thead>
@@ -23,13 +33,7 @@
 				<td>{{$article->id}}</td>
 				<td>{{$article->title}}</td>
 				<td>{{$article->category->name}}</td>
-				<td>
-					@if($article->type=="admin")
-						<span class="label label-danger">{{$article->type}}</span>
-					@else
-						<span class="label label-primary">{{$article->type}}</span>
-					@endif
-				</td>
+				<td>{{$article->user->name}}</td>
 				<td>
 					<a href="{{route('articles.edit',$article->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
 					</td>

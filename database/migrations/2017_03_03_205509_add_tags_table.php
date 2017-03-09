@@ -24,8 +24,8 @@ class AddTagsTable extends Migration
             $table->integer('article_id')->unsigned();
             $table->integer('tag_id')->unsigned();
             $table->unique(['article_id', 'tag_id']);
-            $table->foreign('article_id')->references('id')->on('articles')->onDelete('no action')->onUpdate('no action');
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

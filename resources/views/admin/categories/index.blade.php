@@ -7,7 +7,16 @@
   <div class="panel-heading">@yield('title')</div>
   <div class="panel-body">
    
-   	<a href="{{route('categories.create')}}" class="pull-right btn btn-success"><i class="fa fa-plus"></i></a>
+<a href="{{route('categories.create')}}" class="pull-left btn btn-success"><i class="fa fa-plus"></i></a>
+
+{{ Form::open(['route'=>'categories.index','method'=>'GET','class'=>'navbar-form pull-right']) }}
+	<div class="input-group">
+		{{Form::text('name',$name,['class'=>'form-control','placeholder'=>'Buscar Categoría'])}}
+		<span class="input-group-btn">
+			{{Form::submit('Buscar',['class'=>'btn btn-default']) }}
+		</span>
+	</div>
+{{Form::close()}}
 	<table class="table table-striped">
 		<thead>
 			<tr><th>#</th>
@@ -21,13 +30,6 @@
 			<tr>
 				<td>{{$category->id}}</td>
 				<td>{{$category->name}}</td>
-				<td>
-					@if($category->type=="admin")
-						<span class="label label-danger">{{$category->type}}</span>
-					@else
-						<span class="label label-primary">{{$category->type}}</span>
-					@endif
-				</td>
 				<td>
 					<a href="{{route('categories.edit',$category->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
 					</td>

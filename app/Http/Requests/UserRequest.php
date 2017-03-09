@@ -25,8 +25,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         $user = User::find($this->user);
-
-
+        
         switch($this->method())
         {
             case 'GET':

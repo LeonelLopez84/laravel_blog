@@ -3,3 +3,5 @@ $(document).on('submit', '#delete-form', function(event) {
 });
 
 $(".select-tag").chosen();
+
+$('.editor').trumbowyg();

@@ -11,7 +11,7 @@
 			<div class="panel panel-default">
 			  <div class="panel-heading">@yield('title')</div>
 			  <div class="panel-body">
-			{{ Form::open(['route' => 'articles.store',"method"=>"POST",'files'=>true]) }}
+			{{ Form::open(['route' => ['articles.update',$article->id],"method"=>"PUT",'files'=>true]) }}
 
 				<div class="form-group">
 					{{Form::label('title','Titulo')}}
@@ -25,7 +25,7 @@
 
 				<div class="form-group">
 					{{Form::label('content','Contenido')}}
-					{{Form::textarea('content',$article->content, ['class'=>'form-control','placeholder'=>'Contenido','required'] ) }}
+					{{Form::textarea('content',$article->content, ['class'=>'form-control editor','placeholder'=>'Contenido','required'] ) }}
 				</div>
 
 				<div class="form-group">

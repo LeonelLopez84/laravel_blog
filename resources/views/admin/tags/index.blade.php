@@ -31,15 +31,8 @@
 				<td>{{$tag->id}}</td>
 				<td>{{$tag->name}}</td>
 				<td>
-					@if($tag->type=="admin")
-						<span class="label label-danger">{{$tag->type}}</span>
-					@else
-						<span class="label label-primary">{{$tag->type}}</span>
-					@endif
-				</td>
-				<td>
 					<a href="{{route('tags.edit',$tag->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-					</td>
+				</td>
 					<td>
 						@include("admin.tags.delete",['id'=>$tag->id])
 					</td>

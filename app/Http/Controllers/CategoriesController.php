@@ -18,10 +18,12 @@ class CategoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         $categories=Category::orderBy('name','ASC')->paginate(15);
-        return view('admin.categories.index')->with('categories',$categories);
+         $categories=Category::search($request->name)->orderBy('name','ASC')->paginate(15);
+        return view('admin.categories.index')
+                ->with('categories',$categories)
+                ->with('name',$request->name);
     }
 
     /**
