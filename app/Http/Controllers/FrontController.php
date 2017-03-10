@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Category;
+use App\Tag;
 use Carbon\Carbon;
 
 class FrontController extends Controller
@@ -26,6 +28,24 @@ class FrontController extends Controller
     public function index()
     {
         $articles=Article::orderBy('created_at','DESC')->paginate(10);
+        return view('front.home')
+                ->with('articles',$articles);
+
+    }
+
+    public function searchCategory($name)
+    {
+        $category=Category::SearchCategory($name)->first();
+        $articles=$category->articles()->paginate(10);
+        return view('front.home')
+                ->with('articles',$articles);
+
+    }
+
+     public function searchTag($name)
+    {
+        $tag=Tag::SearchTag($name)->first();
+        $articles=$tag->articles()->paginate(10);
         return view('front.home')
                 ->with('articles',$articles);
 

@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'FrontController@index');
+Route::get('/categories/{name}', 'FrontController@searchCategory');
+Route::get('/tags/{name}', 'FrontController@searchTag');
 
 Route::group(['prefix'=>'admin'],function(){
 
