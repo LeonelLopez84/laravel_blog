@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    	return view('welcome');
-	});
+Route::get('/', 'FrontController@index');
 
 Route::group(['prefix'=>'admin'],function(){
 
@@ -23,12 +21,30 @@ Route::group(['prefix'=>'admin'],function(){
     	return view('admin.welcome');
 	});
 
-	Route::get('/home', 'HomeController@index');
+	Route::get('/home', 'AdminController@index');
 
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');
 	Route::resource('tags','TagsController');
 	Route::resource('articles','ArticlesController');
+
+});
+
+Route::get('articles/images/{filename}',function($filename){
+
+	$path=storage_path("app/public/images/$filename");
+
+	if(!\File::exists($path)) abort(404);
+
+	$file = \File::get($path);
+
+	$type =\File::mimeType($path);
+
+	$response = Response::make($file,200);
+
+	$response->header("Content-Type",$type);
+
+	return $response;
 
 });
 

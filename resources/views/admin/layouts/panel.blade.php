@@ -26,7 +26,7 @@
         ]) !!};
     </script>
 </head>
-<body>
+<body id="panel">
 @include('admin.partials.nav')
 <div class="container-fluid" id="body">
     <div class="container">

@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-	<h1>Hola desde mi panel</h1>
-	<a href="#" class="btn btn-success">Soy un boton de bootstrap</a>
+	<h1>Hola Administrador</h1>
 @endsection
 

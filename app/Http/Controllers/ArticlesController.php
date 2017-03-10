@@ -67,6 +67,7 @@ class ArticlesController extends Controller
             $image= new Image();
             $image->name = $name ;
             $image->article()->associate($article);
+            $image->save();
         }
 
         Flash::success("Se ha creado el articulo <b>$article->title</b>");
@@ -132,6 +133,7 @@ class ArticlesController extends Controller
             $image= new Image();
             $image->name = $name ;
             $image->article()->associate($article);
+            $image->save();
         }
         
         Flash::success("Se ha actualizado el articulo <b>$article->title</b>");

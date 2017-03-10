@@ -68,7 +68,7 @@
 /* 0 */
 /***/ function(module, exports) {
 
-eval("$(document).on('submit', '#delete-form', function(event) {\n\treturn confirm(\"¿Desea borrar el dato?\");\n});\n\n$(\".select-tag\").chosen();\n\n$('.editor').trumbowyg();//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9yZXNvdXJjZXMvYXNzZXRzL2pzL2FwcC5qcz84YjY3Il0sInNvdXJjZXNDb250ZW50IjpbIiQoZG9jdW1lbnQpLm9uKCdzdWJtaXQnLCAnI2RlbGV0ZS1mb3JtJywgZnVuY3Rpb24oZXZlbnQpIHtcblx0cmV0dXJuIGNvbmZpcm0oXCLCv0Rlc2VhIGJvcnJhciBlbCBkYXRvP1wiKTtcbn0pO1xuXG4kKFwiLnNlbGVjdC10YWdcIikuY2hvc2VuKCk7XG5cbiQoJy5lZGl0b3InKS50cnVtYm93eWcoKTtcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gcmVzb3VyY2VzL2Fzc2V0cy9qcy9hcHAuanMiXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwic291cmNlUm9vdCI6IiJ9");
+eval("$(document).on('submit', '#delete-form', function(event) {\n\treturn confirm(\"¿Desea borrar el dato?\");\n});\n\n$(\".select-tag\").chosen();\n\n$('.editor').trumbowyg();    //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOlsid2VicGFjazovLy9yZXNvdXJjZXMvYXNzZXRzL2pzL2FwcC5qcz84YjY3Il0sInNvdXJjZXNDb250ZW50IjpbIiQoZG9jdW1lbnQpLm9uKCdzdWJtaXQnLCAnI2RlbGV0ZS1mb3JtJywgZnVuY3Rpb24oZXZlbnQpIHtcblx0cmV0dXJuIGNvbmZpcm0oXCLCv0Rlc2VhIGJvcnJhciBlbCBkYXRvP1wiKTtcbn0pO1xuXG4kKFwiLnNlbGVjdC10YWdcIikuY2hvc2VuKCk7XG5cbiQoJy5lZGl0b3InKS50cnVtYm93eWcoKTsgICAgXG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIHJlc291cmNlcy9hc3NldHMvanMvYXBwLmpzIl0sIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQSIsInNvdXJjZVJvb3QiOiIifQ==");
 
 /***/ }
 /******/ ]);
