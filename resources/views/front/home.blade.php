@@ -1,8 +1,11 @@
 @extends('front.layouts.app')
 
+@section("title","Blog Laravel")
+
 @section('content')
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-8">
+
         <div class="row">
             @foreach($articles as $article)
             <div class="col-xs-12 col-sm-6 col-md-6">

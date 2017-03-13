@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Str;
 use App\Article;
 use App\Tag;
 use App\Category;
@@ -52,7 +53,11 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
 
-        $article = new Article($request->all());
+        $article = new Article();
+        $article->title =$request->title;
+        $article->category_id =$request->category_id;
+        $article->content = $request->content;
+        $article->slug = Str::slug($request->title);
         $article->user_id= \Auth::user()->id;
         $article->save();
 
@@ -118,7 +123,9 @@ class ArticlesController extends Controller
     {
 
         $article =Article::find($id);
-        $article->fill($request->all());
+        $article->title =$request->title;
+        $article->content = $request->content;
+        $article->slug = Str::slug($request->title);
         $article->user_id = \Auth::user()->id;
         $article->save();
 

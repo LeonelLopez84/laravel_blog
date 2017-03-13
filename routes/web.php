@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'FrontController@index');
+Route::get('/articles/{slug}', 'FrontController@viewArticle');
 Route::get('/categories/{name}', 'FrontController@searchCategory');
 Route::get('/tags/{name}', 'FrontController@searchTag');
 

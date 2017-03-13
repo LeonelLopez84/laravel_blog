@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-xs-4 col-sm-4 col-md-4">
-                <img src="http://lorempixel.com/400/200/" alt="" class="img-responsive">
+            <a href="{{url('/')}}"><img src="http://lorempixel.com/400/200/" alt="" class="img-responsive"></a>
             </div>
         </div>
         <div class="row">
@@ -34,10 +34,12 @@
                 <hr>
             </div>
         </div>
-        
         @include("flash::message")
        @yield('content')
     </div>
+<footer class="footer">
+    @include('front.partials.footer')
+</footer>
     <!-- Scripts -->
  <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"  ></script>
     <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"  ></script>

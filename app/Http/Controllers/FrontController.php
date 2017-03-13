@@ -50,4 +50,12 @@ class FrontController extends Controller
                 ->with('articles',$articles);
 
     }
+
+    public function viewArticle($slug)
+    {
+    	$article = Article::where('slug','=',$slug)->first();
+ 		return view('front.article')
+                ->with('article',$article);
+    	
+    }
 }
