@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', 'FrontController@index');
-Route::get('/articles/{slug}', 'FrontController@viewArticle');
-Route::get('/categories/{name}', 'FrontController@searchCategory');
+Route::get('/',['as' => 'home', 
+				'uses' => 'FrontController@index']);
+
+Route::get('/articles/{slug}',['as' => 'articles', 
+								'uses' => 'FrontController@viewArticle']);
+
+Route::get('/categories/{name}','FrontController@searchCategory');
+
 Route::get('/tags/{name}', 'FrontController@searchTag');
 
 Route::group(['prefix'=>'admin'],function(){

@@ -2,10 +2,21 @@
 
 @section("title","Blog Laravel")
 
+@if(isset($name))
+    @section('breadcrumbs', Breadcrumbs::render('filtro_name',$name))
+@else
+    @section('breadcrumbs', Breadcrumbs::render('home'))
+@endif
+
 @section('content')
+
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-8">
-
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+               @yield('breadcrumbs')
+            </div>
+        </div>
         <div class="row">
             @foreach($articles as $article)
             <div class="col-xs-12 col-sm-6 col-md-6">
