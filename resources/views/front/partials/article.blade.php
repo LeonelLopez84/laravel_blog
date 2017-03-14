@@ -1,4 +1,3 @@
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title"><a href="{{url('articles/'.$article->slug) }}">{{$article->title}}</a> </h3>

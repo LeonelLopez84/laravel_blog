@@ -1,7 +1,7 @@
 @extends('front.layouts.app')
 
 @section("title",$article->title)
-
+ 
 @section('breadcrumbs',Breadcrumbs::render('post',$article->title))
 
 @section('content')

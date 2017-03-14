@@ -2,7 +2,7 @@
 
 @section("title","Blog Laravel")
 
-@if(isset($name))
+@if(isset($name)) 
     @section('breadcrumbs', Breadcrumbs::render('filtro_name',$name))
 @else
     @section('breadcrumbs', Breadcrumbs::render('home'))
