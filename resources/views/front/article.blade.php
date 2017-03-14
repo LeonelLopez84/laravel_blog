@@ -1,10 +1,17 @@
 @extends('front.layouts.app')
 
 @section("title",$article->title)
+ 
+@section('breadcrumbs',Breadcrumbs::render('post',$article->title))
 
 @section('content')
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-8">
+	    <div class="row">
+	       <div class="col-xs-12 col-sm-12 col-md-12">
+	        	@yield('breadcrumbs')
+	        </div>
+	    </div>
         <div class="row">
         	<div class="col-xs-12 col-sm-12 col-md-12">
 	            <div class="panel">
@@ -19,7 +26,7 @@
 							@break
 						 @endforeach
 						 <blockquote>
-							{{$article->content}}
+							{!! $article->content !!}
 						</blockquote>
 					</div>
 				</div>

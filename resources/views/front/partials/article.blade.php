@@ -1,18 +1,9 @@
-@section('breadcrumb')
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-		<ol class="breadcrumb">
-    		<li><a href="{{url('/')}}">Home</a></li>
-		</ol>
-	</div>
-</div>
-@endsection
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title"><a href="{{url('articles/'.$article->slug) }}">{{$article->title}}</a> </h3>
 	</div>
 	<div class="panel-body img-body" >
-	<a href="{{url('articles/'.$article->slug) }}">
+	<a href="{{route('articles',$article->slug) }}">
 		@foreach($article->images as $img)
 			<img src="{{url("/articles/images/$img->name")}}" alt="" class="img-thumbnail img-reponsive">
 			@break

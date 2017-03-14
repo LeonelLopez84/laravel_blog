@@ -38,7 +38,8 @@ class FrontController extends Controller
         $category=Category::SearchCategory($name)->first();
         $articles=$category->articles()->paginate(10);
         return view('front.home')
-                ->with('articles',$articles);
+                ->with('articles',$articles)
+                ->with('name',$name);
 
     }
 
@@ -47,7 +48,8 @@ class FrontController extends Controller
         $tag=Tag::SearchTag($name)->first();
         $articles=$tag->articles()->paginate(10);
         return view('front.home')
-                ->with('articles',$articles);
+                ->with('articles',$articles)
+                ->with('name',$name);
 
     }
 
