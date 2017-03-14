@@ -8,6 +8,10 @@
     @section('breadcrumbs', Breadcrumbs::render('home'))
 @endif
 
+@section('home_title')
+    <h3>{{trans('app.home_title')}}</h3>
+@endsection
+
 @section('content')
 
 <div class="row">
@@ -15,6 +19,11 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                @yield('breadcrumbs')
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+               @yield('home_title')
             </div>
         </div>
         <div class="row">

@@ -169,6 +169,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
          Laracasts\Flash\FlashServiceProvider::class,
           DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+          Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
         //
 
@@ -232,7 +233,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class
+        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
     ],
 
 ];

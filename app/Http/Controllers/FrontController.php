@@ -7,6 +7,7 @@ use App\Article;
 use App\Category;
 use App\Tag;
 use Carbon\Carbon;
+use SEO;
 
 class FrontController extends Controller
 {
@@ -27,6 +28,7 @@ class FrontController extends Controller
      */
     public function index()
     {
+
         $articles=Article::orderBy('created_at','DESC')->paginate(10);
         return view('front.home')
                 ->with('articles',$articles);
@@ -56,6 +58,14 @@ class FrontController extends Controller
     public function viewArticle($slug)
     {
     	$article = Article::where('slug','=',$slug)->first();
+
+        SEO::setTitle($article->title);
+        SEO::setDescription($article->title);
+        SEO::opengraph()->setUrl(url('/articles/'.$article->slug));
+        SEO::setCanonical(url('/'));
+        SEO::opengraph()->addProperty('type', 'articles');
+        SEO::twitter()->setSite($article->user->twitter_user);
+
  		return view('front.article')
                 ->with('article',$article);
     	
