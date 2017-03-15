@@ -19,6 +19,7 @@ class FrontController extends Controller
     public function __construct()
     {
         Carbon::setLocale('es');
+        SEO::twitter()->setSite('@webstagemx');
     }
 
     /**
@@ -26,29 +27,46 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $articles=Article::orderBy('created_at','DESC')->paginate(10);
+        $articles=Article::SearchArticle($request->search)->orderBy('created_at','DESC')->paginate(10);
+    
         return view('front.home')
-                ->with('articles',$articles);
+                ->with('articles',$articles)
+                 ->with('search',$request->search);
 
     }
+
 
     public function searchCategory($name)
     {
         $category=Category::SearchCategory($name)->first();
         $articles=$category->articles()->paginate(10);
+
+        SEO::setTitle($category->name);
+        SEO::setDescription($category->name);
+        SEO::opengraph()->setUrl(url('/categories/'.$category->name));
+        SEO::setCanonical(url('/categories/'.$category->name));
+        SEO::opengraph()->addProperty('type', 'categories');
+
         return view('front.home')
                 ->with('articles',$articles)
                 ->with('name',$name);
-
     }
 
      public function searchTag($name)
     {
         $tag=Tag::SearchTag($name)->first();
         $articles=$tag->articles()->paginate(10);
+
+        SEO::setTitle($tag->name);
+        SEO::setDescription($tag->name);
+        SEO::opengraph()->setUrl(url('/tags/'.$tag->name));
+        SEO::setCanonical(url('/tags/'.$tag->name));
+        SEO::opengraph()->addProperty('type', 'tags');
+        
+
         return view('front.home')
                 ->with('articles',$articles)
                 ->with('name',$name);
@@ -62,7 +80,7 @@ class FrontController extends Controller
         SEO::setTitle($article->title);
         SEO::setDescription($article->title);
         SEO::opengraph()->setUrl(url('/articles/'.$article->slug));
-        SEO::setCanonical(url('/'));
+        SEO::setCanonical(url('/articles/'.$article->slug));
         SEO::opengraph()->addProperty('type', 'articles');
         SEO::twitter()->setSite($article->user->twitter_user);
 

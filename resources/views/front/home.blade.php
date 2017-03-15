@@ -40,7 +40,10 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4">
+        @include('front.partials.search')
+
         @include('front.partials.categories')
+        
         @include('front.partials.tags')
     </div>
 </div>

@@ -34,4 +34,9 @@ class Article extends Model
     {
         return $query->where('title','LIKE',"%{$title}%");
     }
+
+    public function scopeSearchArticle($query, $title)
+    {
+        return $query->where('title','LIKE',"%{$title}%"); 
+    }
 }
