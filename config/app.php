@@ -170,6 +170,7 @@ return [
          Laracasts\Flash\FlashServiceProvider::class,
           DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
           Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+          Roumen\Sitemap\SitemapServiceProvider::class,
 
         //
 

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/',['as' => 'home', 
 				'uses' => 'FrontController@index']);
 
@@ -56,3 +57,55 @@ Route::get('articles/images/{filename}',function($filename){
 
 });
 
+// 
+
+Route::get('sitemap', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
+    // by default cache is disabled
+    $sitemap->setCache('laravel.sitemap',5,true);
+
+    // check if there is cached sitemap and build new only if is not
+    if (!$sitemap->isCached())
+    {
+         // add item to the sitemap (url, date, priority, freq)
+         $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+         
+         $categories = App\Category::orderBy('created_at', 'desc')->get();
+         foreach ($categories as $category)
+         {
+			$sitemap->add(URL::to('/categories/'.$category->name), $category->updated_at,'0.9','monthly');
+
+         }
+
+         $tags = App\Tag::orderBy('created_at', 'desc')->get();
+         foreach ($tags as $tag)
+         {
+			$sitemap->add(URL::to('/tags/'.$tag->name), $tag->updated_at,'0.9','monthly');
+
+         }
+
+
+         $posts = App\Article::orderBy('created_at', 'desc')->get();
+         foreach ($posts as $post)
+         {
+            $images = array();
+            foreach ($post->images as $image) {
+                $images[] = array(
+                    'url' => URL::to('/articles/images/'.$image->name),
+                    'title' => $image->article->title,
+                    'caption' => 'image Caption'
+                );
+            }
+
+            $sitemap->add(URL::to('/articles/'.$post->slug), $post->updated_at,'0.9','monthly', $images);
+         }
+    }
+
+    // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+    return $sitemap->render('xml');
+
+});
