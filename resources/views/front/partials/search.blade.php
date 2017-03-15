@@ -4,7 +4,7 @@
 			<div class="input-group">
 				{{Form::text('search',$search,['class'=>'form-control','placeholder'=>'Buscar Articulo'])}}
 				<span class="input-group-btn">
-					{{Form::submit('Buscar',['class'=>'btn btn-default']) }}
+					{{Form::submit('Buscar',['class'=>'btn btn-success']) }}
 				</span>
 			</div>
 		{{Form::close()}}

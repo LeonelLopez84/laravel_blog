@@ -5,13 +5,19 @@
 @section('breadcrumbs',Breadcrumbs::render('post',$article->title))
 
 @section('content')
+
 <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-8">
-	    <div class="row">
-	       <div class="col-xs-12 col-sm-12 col-md-12">
-	        	@yield('breadcrumbs')
-	        </div>
-	    </div>
+    
+    <div class="col-xs-12 col-sm-8 col-md-8 section">
+     <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                   @yield('breadcrumbs')
+                </div>
+            </div>
+        </div>
+    </div>
         <div class="row">
         	<div class="col-xs-12 col-sm-12 col-md-12">
 	            <div class="panel">
@@ -19,7 +25,7 @@
 						<h1>{{$article->title}}</h1>
 					</div>
 					<div class="panel-body img-body" >
-						<p class="text-right">Por:<a href="{{url("user/".$article->user->twitter_user)}}">{{$article->user->twitter_user}}</a></p>
+						<p class="text-right">Por:<a href="https://twitter.com/{{$article->user->twitter_user}}">{{$article->user->twitter_user}}</a></p>
 						<p class="text-right">{{$article->created_at->format('l jS \\of F Y')}}</p>
 						@foreach($article->images as $img)
 							<img src="{{url("/articles/images/$img->name")}}" alt="" class="img-thumbnail img-reponsive">
@@ -56,6 +62,20 @@
 			<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                                 
             </div>
+        </div>
+        <div class="row">
+        	<div class="col-xs-12 col-sm-12 col-md-12">
+        		<p class="lead">De tu interes</p>
+        	</div>
+        </div>
+        <div class="row related">
+
+				@foreach($related as $relate)
+	                <div class="col-xs-12 col-sm-4 col-md-4">
+	                   @include('front.partials.article',['article'=>$relate])
+	                </div>
+            	@endforeach
+	
         </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4">

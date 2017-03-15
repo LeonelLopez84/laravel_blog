@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Article;
 use App\Category;
 use App\Tag;
@@ -30,7 +31,7 @@ class FrontController extends Controller
     public function index(Request $request)
     {
 
-        $articles=Article::SearchArticle($request->search)->orderBy('created_at','DESC')->paginate(10);
+        $articles=Article::SearchArticle($request->search)->orderBy('created_at','DESC')->paginate(6);
     
         return view('front.home')
                 ->with('articles',$articles)
@@ -79,6 +80,8 @@ class FrontController extends Controller
     {
     	$article = Article::where('slug','=',$slug)->first();
 
+        $related=Article::where('category_id','=',$article->category_id)->inRandomOrder()->take(3)->get();
+
         SEO::setTitle($article->title);
         SEO::setDescription($article->title);
         SEO::opengraph()->setUrl(url('/articles/'.$article->slug));
@@ -88,6 +91,7 @@ class FrontController extends Controller
 
  		return view('front.article')
                 ->with('article',$article)
+                ->with('related',$related)
                 ->with('search','');
     	
     }
