@@ -13,7 +13,7 @@
 			<b>{{$article->user->name}}</b> | <time datetime="2014-01-20">{{$article->created_at->diffForHumans()}}</time>
 		</div>
 		<div class="preview">
-			{!! str_limit($article->content,300)!!}
+			{!! $article->preview!!}
 		</div>
 		<div>
 			<a href="{{route('articles',$article->slug) }}" class="btn btn-warning btn-sm">Read more</a>

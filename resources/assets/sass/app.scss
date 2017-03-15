@@ -50,6 +50,11 @@ body{
 		 	.panel-default{
 				@include border-shadow();
 		 	}
+		 	.interes{
+		 		background-color:#5bc0de;
+		 		color:#fff;
+		 		padding:10px;
+		 	}
 		 }
 	}
 

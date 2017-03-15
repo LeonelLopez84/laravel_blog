@@ -38,6 +38,7 @@ class ArticleRequest extends FormRequest
                 return [
                     'title'      => 'min:10|required|unique:articles',
                     'category_id'=> 'required',
+                    'preview'    => 'min:10|required',
                     'content'    => 'min:10|required',
                     'tags'       => 'required|array|min:1',
                     'image'      => 'required|image'
@@ -49,6 +50,7 @@ class ArticleRequest extends FormRequest
                 return [
                    'title'      => 'min:10|required|unique:articles,title,'.$article->id,
                    'category_id'=> 'required',
+                   'preview'    => 'min:10|required',
                    'content'    => 'min:10|required',
                    'tags'       => 'required|array|min:1'
                 ];

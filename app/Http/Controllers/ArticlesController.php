@@ -56,6 +56,7 @@ class ArticlesController extends Controller
         $article = new Article();
         $article->title =$request->title;
         $article->category_id =$request->category_id;
+        $article->preview = $request->preview;
         $article->content = $request->content;
         $article->slug = Str::slug($request->title);
         $article->user_id= \Auth::user()->id;
@@ -124,6 +125,7 @@ class ArticlesController extends Controller
 
         $article =Article::find($id);
         $article->title =$request->title;
+        $article->preview = $request->preview;
         $article->content = $request->content;
         $article->slug = Str::slug($request->title);
         $article->user_id = \Auth::user()->id;

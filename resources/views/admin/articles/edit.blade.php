@@ -24,6 +24,11 @@
 				</div>
 
 				<div class="form-group">
+					{{Form::label('preview','Preview')}}
+					{{Form::textarea('preview',$article->preview, ['class'=>'form-control','placeholder'=>'Contenido previo','required'] ) }}
+				</div>
+
+				<div class="form-group">
 					{{Form::label('content','Contenido')}}
 					{{Form::textarea('content',$article->content, ['class'=>'form-control editor','placeholder'=>'Contenido','required'] ) }}
 				</div>
