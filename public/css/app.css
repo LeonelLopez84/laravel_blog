@@ -24,4 +24,12 @@
   min-height: 45vh;
 }
 
+#front #search-form {
+  margin: 0px 0px 10px;
+}
+
+#front #search-form .input-group {
+  width: 100%;
+}
+
 /*# sourceMappingURL=app.css.map */

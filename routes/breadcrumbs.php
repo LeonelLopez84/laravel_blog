@@ -6,6 +6,12 @@ Breadcrumbs::register('home', function($breadcrumbs)
     $breadcrumbs->push('Home',route('home'));
 });
 
+Breadcrumbs::register('search', function($breadcrumbs,$search)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($search); 
+});
+
 
 Breadcrumbs::register('post', function($breadcrumbs,$title)
 {

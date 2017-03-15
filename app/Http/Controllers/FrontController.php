@@ -52,7 +52,8 @@ class FrontController extends Controller
 
         return view('front.home')
                 ->with('articles',$articles)
-                ->with('name',$name);
+                ->with('name',$name)
+                ->with('search','');
     }
 
      public function searchTag($name)
@@ -69,7 +70,8 @@ class FrontController extends Controller
 
         return view('front.home')
                 ->with('articles',$articles)
-                ->with('name',$name);
+                ->with('name',$name)
+                ->with('search','');
 
     }
 
@@ -85,7 +87,8 @@ class FrontController extends Controller
         SEO::twitter()->setSite($article->user->twitter_user);
 
  		return view('front.article')
-                ->with('article',$article);
+                ->with('article',$article)
+                ->with('search','');
     	
     }
 }

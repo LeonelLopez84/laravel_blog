@@ -4,13 +4,30 @@
 
 @if(isset($name)) 
     @section('breadcrumbs', Breadcrumbs::render('filtro_name',$name))
+
+    @section('home_title')
+        <h3>{{$name}}</h3>
+    @endsection
+
+@elseif(isset($search))
+    @section('breadcrumbs', Breadcrumbs::render('search',$search))
+
+    @section('home_title')
+        <h3>{{$search}}</h3>
+    @endsection
+
+
 @else
     @section('breadcrumbs', Breadcrumbs::render('home'))
+
+    @section('home_title')
+        <h3>{{trans('app.home_title')}}</h3>
+    @endsection
+
 @endif
 
-@section('home_title')
-    <h3>{{trans('app.home_title')}}</h3>
-@endsection
+
+
 
 @section('content')
 
@@ -28,9 +45,9 @@
         </div>
         <div class="row">
             @foreach($articles as $article)
-            <div class="col-xs-12 col-sm-6 col-md-6">
-               @include('front.partials.article',['article'=>$article])
-            </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                   @include('front.partials.article',['article'=>$article])
+                </div>
             @endforeach
         </div>
         <div class="row">
