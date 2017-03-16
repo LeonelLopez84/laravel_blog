@@ -8,14 +8,10 @@
 
 <div class="row">
     
-    <div class="col-xs-12 col-sm-8 col-md-8 section">
+    <div class="col-xs-12 col-sm-12 col-md-12 section">
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                   @yield('breadcrumbs')
-                </div>
-            </div>
+             @yield('breadcrumbs')
         </div>
     </div>
         <div class="row">
@@ -78,11 +74,11 @@
 	
         </div>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4">
+    <!--<div class="col-xs-12 col-sm-4 col-md-4">
     	@include('front.partials.search')
         @include('front.partials.categories')
         @include('front.partials.tags')
-    </div>
+    </div>-->
 </div>
 
 @endsection

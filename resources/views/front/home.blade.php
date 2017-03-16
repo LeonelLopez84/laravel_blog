@@ -23,26 +23,18 @@
 
 @endif
 
-
-
-
-
 @section('content')
 
 
 <div class="row">
 
-    <div class="col-xs-12 col-sm-8 col-md-8 section">
+    <div class="col-xs-12 col-sm-12 col-md-12 section">
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                   @yield('breadcrumbs')
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+               @yield('breadcrumbs')
             </div>
         </div>
-    </div>
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -51,7 +43,7 @@
         </div>
         <div class="row">
             @foreach($articles as $article)
-                <div class="col-xs-12 col-sm-6 col-md-6">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-ld-4">
                     @include('front.partials.article2',['article'=>$article])
                 </div>
             @endforeach
@@ -62,12 +54,12 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-4 col-md-4">
+    <!-- <div class="col-xs-12 col-sm-4 col-md-4">
         @include('front.partials.search')
 
         @include('front.partials.categories')
         
         @include('front.partials.tags')
-    </div>
+    </div>-->
 </div>
 @endsection

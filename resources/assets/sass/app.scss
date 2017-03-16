@@ -1,5 +1,4 @@
 @import "_variables";
-
 @mixin border-shadow(){
 		-webkit-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.25);
 	    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.25);
@@ -28,11 +27,15 @@ body{
 	} 
 }
 
+
+
 #front{
-	.container{
-		margin-top: 30px;
-		background-color:#fff;
-		 @include border-shadow();
+
+	@import "_header";
+
+	.container-fluid{
+		margin-top: 60px;
+		background-color:inherit;
 		.breadcrumb{
 				border-radius:0px;
 				background-color:#5bc0de;
@@ -45,9 +48,8 @@ body{
 			}
 
 		.section{
-		 		
-			border-right:1px solid #ddd;
-		 	.panel-default{
+
+			 	.panel-default{
 				@include border-shadow();
 		 	}
 		 	.interes{
@@ -76,60 +78,7 @@ body{
 	}
 
 
-	.post
-	{
-	    background-color: #FFF;
-	    overflow: hidden;
-	    box-shadow: 0 0 1px #CCC;
-	    min-height:70vh; 
-	    margin-bottom: 20px;
-	    @include border-shadow();
-		
-		.preview{
-			min-height: 15vh;
-		}
-		.content
-		{
-		    padding: 15px;
-		}
-
-		.author
-		{
-		    font-size: 11px;
-		    color: #737373;
-		    padding: 25px 30px 20px;
-		}
-
-		.post-img-content
-		{
-		    height: 200px;
-		    overflow: hidden;
-		    position: relative;
-		}
-
-		.post-img-content img
-		{
-		    position: absolute;
-		}
-
-		.post-title
-		{
-		    display: table-cell;
-		    vertical-align: bottom;
-		    z-index: 2;
-		    position: relative;
-		}
-
-		.post-title b
-		{
-		    background-color: rgba(51, 51, 51, 0.58);
-		    display: inline-block;
-		    margin-bottom: 5px;
-		    color: #FFF;
-		    padding: 10px 15px;
-		    margin-top: 5px;
-		}
-	}
+	@import"_post";
 }
 
 

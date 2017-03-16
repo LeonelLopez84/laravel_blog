@@ -25,23 +25,34 @@
     </script>
 </head>
 <body id="front">
-    <div class="container">
+@include('front.partials.navbar')
+<div class="row">
+
+    @include("front.partials.side-navbar")
+
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-xs-4 col-sm-4 col-md-4">
-            <a href="{{url('/')}}"><img src="http://lorempixel.com/400/200/" alt="" class="img-responsive"></a>
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="row">
+                    <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-xs-4 col-sm-4 col-md-4">
+                        <a href="{{url('/')}}"><img src="http://lorempixel.com/400/200/" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8 col-sm-8 col-md-8">
+                        <hr>
+                    </div>
+                </div>
+                @include("flash::message")
+                @yield('content')
+                @include('front.partials.footer')
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8 col-sm-8 col-md-8">
-                <hr>
-            </div>
-        </div>
-        @include("flash::message")
-       @yield('content')
     </div>
-<footer class="footer">
-    @include('front.partials.footer')
-</footer>
+
+</div>
+
+
     <!-- Scripts -->
  <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"  ></script>
     <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"  ></script>
