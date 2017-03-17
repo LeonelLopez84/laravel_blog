@@ -32,11 +32,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 ">
-                <div class="row">
-                    <div class="col-xs-offset-4 col-sm-offset-4 col-md-offset-4 col-xs-4 col-sm-4 col-md-4">
-                        <a href="{{url('/')}}"><img src="http://lorempixel.com/400/200/" alt="" class="img-responsive"></a>
-                    </div>
-                </div>
+                @include('front.partials.carousel')
                 <div class="row">
                     <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8 col-sm-8 col-md-8">
                         <hr>

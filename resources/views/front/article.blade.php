@@ -2,9 +2,7 @@
 
 @section("title",$article->title)
  
-{!! Breadcrumbs::render('home') !!}
-
-@section('breadcrumbs',Breadcrumbs::render('post',$article->category->upcategory->name,$article->category->name,$article->title))
+ @section('breadcrumbs',Breadcrumbs::render('post',$article->category->upcategory->name,$article->category->name,$article->title))
 
 @section('content')
 
