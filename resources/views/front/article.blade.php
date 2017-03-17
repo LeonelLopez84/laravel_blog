@@ -2,18 +2,14 @@
 
 @section("title",$article->title)
  
-@section('breadcrumbs',Breadcrumbs::render('post',$article->title))
+{!! Breadcrumbs::render('home') !!}
+
+@section('breadcrumbs',Breadcrumbs::render('post',$article->category->upcategory->name,$article->category->name,$article->title))
 
 @section('content')
 
-<div class="row">
-    
-    <div class="col-xs-12 col-sm-12 col-md-12 section">
-     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-             @yield('breadcrumbs')
-        </div>
-    </div>
+  @yield('breadcrumbs')
+
         <div class="row">
         	<div class="col-xs-12 col-sm-12 col-md-12">
 	            <div class="panel">
@@ -73,13 +69,6 @@
             	@endforeach
 	
         </div>
-    </div>
-    <!--<div class="col-xs-12 col-sm-4 col-md-4">
-    	@include('front.partials.search')
-        @include('front.partials.categories')
-        @include('front.partials.tags')
-    </div>-->
-</div>
-
+    
 @endsection
 

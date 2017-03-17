@@ -16,6 +16,11 @@
 					{{Form::text('name',$category->name, ['class'=>'form-control','placeholder'=>'Nombre Completo','required'] ) }}
 				</div>
 
+				<div class="form-group">
+					{{Form::label('category_id','Categoría Padre')}}
+					{{Form::select('category_id',$categories, $category->category_id,['class'=>'form-control','placeholder'=>'Seleccione una opción','required'] ) }}
+				</div>
+
 				<div class="form-group pull-right">
 					{{Form::submit('Editar',['class'=>'btn btn-primary']) }}
 				</div>

@@ -40,8 +40,21 @@ class ArticlesController extends Controller
     public function create()
     {
         $tags=Tag::orderBy('name','ASC')->pluck('name','id');
-        $categories=Category::orderBy('name','ASC')->pluck('name','id');
-        return view("admin.articles.create")->with('categories',$categories)->with('tags',$tags);
+        $categories=[];
+     
+        $categories=Category::where('category_id', '=', '0')
+                            ->orderBy('name','ASC')
+                            ->get()
+                            ->map(function($category){
+                                return ['name' => $category->name, 'categories' => $category->downcategory->pluck('name','id')->toArray()];
+                            })->keyBy('name')->map(function($categories) {
+                                return $categories['categories'];
+                            });
+                            
+        //dd($categories);
+        return view("admin.articles.create")
+                ->with('categories',$categories)
+             ->with('tags',$tags);
     }
 
     /**
@@ -102,7 +115,14 @@ class ArticlesController extends Controller
     {
         $article=Article::find($id);
         $tags=Tag::orderBy('name','ASC')->pluck('name','id');
-        $categories=Category::orderBy('name','ASC')->pluck('name','id');
+        $categories=Category::where('category_id', '=', '0')
+                            ->orderBy('name','ASC')
+                            ->get()
+                            ->map(function($category){
+                                return ['name' => $category->name, 'categories' => $category->downcategory->pluck('name','id')->toArray()];
+                            })->keyBy('name')->map(function($categories) {
+                                return $categories['categories'];
+                            });
         $selected_tags=$article->tags->pluck('id')->toArray();
 
         return view('admin.articles.edit')
@@ -123,9 +143,10 @@ class ArticlesController extends Controller
     public function update(ArticleRequest $request, $id)
     {
 
-        $article =Article::find($id);
+       $article =Article::find($id);
         $article->title =$request->title;
         $article->preview = $request->preview;
+        $article->category_id = $request->category_id;
         $article->content = $request->content;
         $article->slug = Str::slug($request->title);
         $article->user_id = \Auth::user()->id;

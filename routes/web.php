@@ -18,7 +18,9 @@ Route::get('/',['as' => 'home',
 Route::get('/articles/{slug}',['as' => 'articles', 
 								'uses' => 'FrontController@viewArticle']);
 
-Route::get('/categories/{name}','FrontController@searchCategory');
+Route::get('/categories/{padre}','FrontController@searchCategory');
+
+Route::get('/categories/{padre}/{name}','FrontController@searchSubCategory');
 
 Route::get('/tags/{name}', 'FrontController@searchTag');
 
@@ -77,7 +79,9 @@ Route::get('sitemap', function(){
          $categories = App\Category::orderBy('created_at', 'desc')->get();
          foreach ($categories as $category)
          {
-			$sitemap->add(URL::to('/categories/'.$category->name), $category->updated_at,'0.9','monthly');
+            foreach($category->downcategory as $subcategory){
+			    $sitemap->add(URL::to('categories/'.$category->name.'/'.$subcategory->name), $category->updated_at,'0.9','monthly');
+            }
 
          }
 

@@ -19,6 +19,11 @@
 				</div>
 
 				<div class="form-group">
+					{{Form::label('category_id','Categoría Padre')}}
+					{{Form::select('category_id',$categories,null,['class'=>'form-control','placeholder'=>'Seleccione una opción','required'] ) }}
+				</div>
+
+				<div class="form-group">
 					{{Form::submit('Crear',['class'=>'btn btn-success']) }}
 				</div>
 			{{ Form::close() }}

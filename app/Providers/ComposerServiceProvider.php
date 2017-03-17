@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['front.home','front.article'],'App\Http\ViewComposers\AsideComposer');
+        View::composer(['front.home','front.article'],'App\Http\ViewComposers\NavbarComposer');
     }
 
     /**

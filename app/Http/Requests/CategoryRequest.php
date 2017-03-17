@@ -37,7 +37,8 @@ class CategoryRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'=>'min:5|required|unique:categories'
+                    'name'=>'min:5|required|unique:categories',
+                    'category_id'=>'required'
                 ];
             }
             case 'PUT':
@@ -45,6 +46,7 @@ class CategoryRequest extends FormRequest
             {
                 return [
                    'name'=> 'min:5|required|unique:categories,name,'.$category->id,
+                   'category_id'=>'required'
                 ];
             }
             default:break;

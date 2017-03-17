@@ -40,9 +40,9 @@ class FrontController extends Controller
     }
 
 
-    public function searchCategory($name)
+    public function searchSubCategory($padre,$category)
     {
-        $category=Category::SearchCategory($name)->first();
+        $category=Category::SearchCategory($category)->first();
         $articles=$category->articles()->paginate(10);
 
         SEO::setTitle($category->name);
@@ -50,10 +50,10 @@ class FrontController extends Controller
         SEO::opengraph()->setUrl(url('/categories/'.$category->name));
         SEO::setCanonical(url('/categories/'.$category->name));
         SEO::opengraph()->addProperty('type', 'categories');
-
         return view('front.home')
                 ->with('articles',$articles)
-                ->with('name',$name)
+                ->with('padre',$padre)
+                ->with('category',$category)
                 ->with('search','');
     }
 
@@ -71,6 +71,7 @@ class FrontController extends Controller
 
         return view('front.home')
                 ->with('articles',$articles)
+                ->with('padre','Tag')
                 ->with('name',$name)
                 ->with('search','');
 

@@ -167,10 +167,10 @@ return [
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
-         Laracasts\Flash\FlashServiceProvider::class,
-          DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
-          Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-          Roumen\Sitemap\SitemapServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+        Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Roumen\Sitemap\SitemapServiceProvider::class,
 
         //
 

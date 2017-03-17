@@ -9,21 +9,35 @@ Breadcrumbs::register('home', function($breadcrumbs)
 Breadcrumbs::register('search', function($breadcrumbs,$search)
 {
     $breadcrumbs->parent('home');
+    $breadcrumbs->push('busqueda'); 
     $breadcrumbs->push($search); 
 });
 
-
-Breadcrumbs::register('post', function($breadcrumbs,$title)
+Breadcrumbs::register('tag', function($breadcrumbs,$tag)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($title,route('articles',$title));
+    $breadcrumbs->push($tag,route('tags',$tag));
 });
 
-
-Breadcrumbs::register('filtro_name', function($breadcrumbs,$name)
+Breadcrumbs::register('category', function($breadcrumbs,$padre)
 {
     $breadcrumbs->parent('home');
-    $breadcrumbs->push($name,route('articles',$name));
+    $breadcrumbs->push($padre);
+});
+
+Breadcrumbs::register('subcategory', function($breadcrumbs,$padre,$category)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($padre);
+    $breadcrumbs->push($category,url('categories/'.$padre.'/'.$category));
+});
+
+Breadcrumbs::register('post', function($breadcrumbs,$padre,$category,$title)
+{
+    $breadcrumbs->parent('home');
+    $breadcrumbs->push($padre);
+    $breadcrumbs->push($category,url('categories/'.$padre.'/'.$category));
+    $breadcrumbs->push($title,route('articles',$title));
 });
 
 /*

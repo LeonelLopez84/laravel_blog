@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,9 +26,8 @@
 </head>
 <body id="front">
 @include('front.partials.navbar')
-<div class="row">
 
-    @include("front.partials.side-navbar")
+@include("front.partials.side-navbar")
 
     <div class="container-fluid">
         <div class="row">
@@ -49,8 +48,6 @@
             </div>
         </div>
     </div>
-
-</div>
 
 
     <!-- Scripts -->

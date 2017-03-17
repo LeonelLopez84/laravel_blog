@@ -44,7 +44,7 @@
 				</div>
 
 				<div class="form-group">
-					{{Form::submit('Crear',['class'=>'btn btn-success']) }}
+					{{Form::submit('Actualizar',['class'=>'btn btn-info']) }}
 				</div>
 			{{ Form::close() }}
 				</div>

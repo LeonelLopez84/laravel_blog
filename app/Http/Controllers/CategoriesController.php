@@ -33,7 +33,8 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        return view("admin.categories.create");
+        $categories=Category::where('category_id','=','0')->orderBy('name','ASC')->pluck('name','id');
+        return view("admin.categories.create")->with('categories',$categories);
     }
 
     /**
@@ -44,8 +45,9 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        $category = new Category($request->all());
 
+        $category = new Category($request->all());
+        
         $category->save();
 
         Flash::success("La categoría <b>$category->name</b>");
@@ -73,8 +75,11 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category=Category::find($id);
+        $categories=Category::where('category_id','=','0')->orderBy('name','ASC')->pluck('name','id');
 
-        return view('admin.categories.edit')->with('category',$category);
+        return view('admin.categories.edit')
+                                    ->with('category',$category)
+                                    ->with('categories',$categories);
     }
 
     /**

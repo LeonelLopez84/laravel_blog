@@ -31,7 +31,7 @@ body{
 
 #front{
 
-	@import "_header";
+	@import "_sidenavbar";
 
 	.container-fluid{
 		margin-top: 60px;
@@ -69,14 +69,6 @@ body{
 	.img-body{
 		min-height:45vh; 
 	}
-
-	#search-form{
-		margin:0px 0px 10px;
-		.input-group{
-			width: 100%;
-		}
-	}
-
 
 	@import"_post";
 }
