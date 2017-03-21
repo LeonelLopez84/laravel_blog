@@ -28,6 +28,7 @@
   border-bottom: 1px solid #e7e7e7;
 }
 .side-menu .navbar-nav li a {
+  color: $font_color;
   padding: 15px;
 }
 .side-menu .navbar-nav li a .glyphicon {
@@ -48,6 +49,7 @@
   float: right;
 }
 .side-menu #dropdown > a {
+  color:#fff;
   border-bottom: 1px solid #e7e7e7;
 }
 .side-menu #dropdown .panel-body {
@@ -55,6 +57,7 @@
   background-color: #f3f3f3;
 }
 .side-menu #dropdown .panel-body .navbar-nav {
+  background-color:$primary_color;
   width: 100%;
 }
 .side-menu #dropdown .panel-body .navbar-nav li {

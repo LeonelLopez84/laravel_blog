@@ -5,15 +5,6 @@
 	    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.25);
 	}
 
-$primary_color:#028fcc;
-$secundary_color:rgba(0,0,0,.2);
-
-$screen-xs-max:767px;
-$screen-sm-min:768px;
-$screen-sm-max:991px;
-$screen-md-min:992px;
-$screen-md-max:1199px;
-$screen-lg-min:1200px;
 
 
 body{
@@ -54,7 +45,7 @@ body{
 				.navbar-toggle{
 					background-color:$primary_color;
 					.icon-bar{
-						background-color:#fff;
+						background-color:$font_color;
 					}
 				}
 
@@ -70,7 +61,7 @@ body{
 				background-color:$primary_color;
 				li{
 					a,a[aria-expanded='false']{
-						color:#fff;		
+						color:$font_color;		
 						&:hover, &:focus{
 						background-color:$secundary_color;
 						}
@@ -105,7 +96,7 @@ nav{
 					&:hover{
 						background-color:$secundary_color;
 					}
-					color:#fff;		
+					color:$font_color;		
 				}
 			}
 		}
@@ -128,7 +119,7 @@ nav{
 		 	}
 		 	.interes{
 		 		background-color:#5bc0de;
-		 		color:#fff;
+		 		color:$font_color;
 		 		padding:10px;
 		 	}
 		 }
