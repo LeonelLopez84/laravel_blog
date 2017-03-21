@@ -14,7 +14,12 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['front.home','front.article'],'App\Http\ViewComposers\NavbarComposer');
+        View::composer(['front.home',
+                        'front.article',
+                        'front.home',
+                        'front.subcategory',
+                        'front.tag'
+                        ],'App\Http\ViewComposers\NavbarComposer');
     }
 
     /**

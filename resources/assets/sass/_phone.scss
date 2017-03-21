@@ -1,0 +1,10 @@
+// Phones
+@media (max-width: $screen-xs-max) and (orientation : portrait) {
+	#body{
+ 		padding-top:50px;
+ 	}
+}
+
+@media (max-width: $screen-xs-max) and (orientation: landscape){
+
+}

@@ -7,9 +7,10 @@
 @section('content')
 
   @yield('breadcrumbs')
-
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <div class="row">
-        	<div class="col-xs-12 col-sm-12 col-md-12">
+        	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 	            <div class="panel">
 					<div class="panel-heading">
 						<h1>{{$article->title}}</h1>
@@ -61,12 +62,18 @@
         <div class="row related">
 
 				@foreach($related as $relate)
-	                <div class="col-xs-12 col-sm-4 col-md-4">
-	                   @include('front.partials.article',['article'=>$relate])
+	                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+	                   @include('front.partials.article2',['article'=>$relate])
 	                </div>
             	@endforeach
 	
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    </div>
+</div>
     
 @endsection
 

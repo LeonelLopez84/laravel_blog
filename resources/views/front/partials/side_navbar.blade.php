@@ -1,6 +1,6 @@
-<div class="side-menu hidden-sm hidden-md hidden-lg">
+<div class="side-menu hidden-sm hidden-md hidden-lg" id="side-navbar">
     
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <div class="brand-wrapper">
@@ -15,7 +15,8 @@
             <!-- Brand -->
             <div class="brand-name-wrapper">
                 <a class="navbar-brand" href="#">
-                    jueves 16 de marzo de 2017                </a>
+                    <img alt="Brand" src="...">
+                </a>
             </div>
 
             <!-- Search -->
@@ -31,9 +32,9 @@
 
                          {{ Form::open(['route'=>'home','method'=>'GET','class'=>' navbar-form navbar-right','id'=>'search-form']) }}
                           <div class="input-group">
-                            {{Form::text('search',$search,['class'=>'form-control','placeholder'=>'Buscar Articulo'])}}
+                            {{Form::text('search',$search,['class'=>'form-control','placeholder'=>'Buscar Articulo','required'=>'required'])}}
                             <span class="input-group-btn">
-                            <button class="btn btn-default"><span class="btn glyphicon glyphicon-ok"></span></button>
+                            <button class="btn"><span class="btn glyphicon glyphicon-ok"></span></button>
                             </span>
                           </div>
                         {{Form::close()}}
@@ -54,7 +55,7 @@
 
             @foreach($categories as $k=>$category)
                 @if($category->count())
-                    <li class="panel panel-default" id="dropdown">
+                    <li class="panel" id="dropdown">
                         <a data-toggle="collapse" href="#{{$k}}" class="collapse" aria-expanded="false">
                             <span class="glyphicon glyphicon-tag"></span> {{$k}} <span class="caret"></span>
                         </a>

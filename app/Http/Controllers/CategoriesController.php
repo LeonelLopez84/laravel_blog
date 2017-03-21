@@ -47,7 +47,7 @@ class CategoriesController extends Controller
     {
 
         $category = new Category($request->all());
-        
+        $category->slug = Str::slug($request->name);
         $category->save();
 
         Flash::success("La categoría <b>$category->name</b>");
@@ -93,6 +93,7 @@ class CategoriesController extends Controller
     {
         $category=Category::find($id);
         $category->fill($request->all());
+        $category->slug = Str::slug($request->name);
         $category->save();
         Flash::success('La Categoría <b>'.$category->name.'</b> ha sido editado');
         return redirect()->route('categories.index');

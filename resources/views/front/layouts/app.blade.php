@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+    {!! SEO::generate() !!}
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    {!! SEO::generate() !!}
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
@@ -27,23 +26,17 @@
 <body id="front">
 @include('front.partials.navbar')
 
-@include("front.partials.side-navbar")
+@include("front.partials.side_navbar")
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 ">
-                @include('front.partials.carousel')
-                <div class="row">
-                    <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-xs-8 col-sm-8 col-md-8">
-                        <hr>
-                    </div>
-                </div>
-                @include("flash::message")
-                @yield('content')
-                @include('front.partials.footer')
-            </div>
+<div class="container" id="body">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 ">
+            @include("flash::message")
+            @yield('content')
+            @include('front.partials.footer')
         </div>
     </div>
+</div>
 
 
     <!-- Scripts -->

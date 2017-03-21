@@ -50,7 +50,7 @@ class FrontController extends Controller
         SEO::opengraph()->setUrl(url('/categories/'.$category->name));
         SEO::setCanonical(url('/categories/'.$category->name));
         SEO::opengraph()->addProperty('type', 'categories');
-        return view('front.home')
+        return view('front.subcategory')
                 ->with('articles',$articles)
                 ->with('padre',$padre)
                 ->with('category',$category)
@@ -69,7 +69,7 @@ class FrontController extends Controller
         SEO::opengraph()->addProperty('type', 'tags');
         
 
-        return view('front.home')
+        return view('front.tag')
                 ->with('articles',$articles)
                 ->with('padre','Tag')
                 ->with('name',$name)

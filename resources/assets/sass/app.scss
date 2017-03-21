@@ -4,6 +4,18 @@
 	    -moz-box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.25);
 	    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.25);
 	}
+
+$primary_color:#028fcc;
+$secundary_color:rgba(0,0,0,.2);
+
+$screen-xs-max:767px;
+$screen-sm-min:768px;
+$screen-sm-max:991px;
+$screen-md-min:992px;
+$screen-md-max:1199px;
+$screen-lg-min:1200px;
+
+
 body{
 	background-color:#f5f5f5;
 }
@@ -33,22 +45,84 @@ body{
 
 	@import "_sidenavbar";
 
-	.container-fluid{
-		margin-top: 60px;
-		background-color:inherit;
-		.breadcrumb{
-				border-radius:0px;
-				background-color:#5bc0de;
-				li{
-					color:#fff;
-					a{
-						color:#fff;
+	#side-navbar{
+		background-color:$primary_color;
+		.navbar-header{
+			background-color:$primary_color;
+			.brand-wrapper{
+				background-color:$primary_color;
+				.navbar-toggle{
+					background-color:$primary_color;
+					.icon-bar{
+						background-color:#fff;
 					}
 				}
+
+				a{
+					background-color:inherit;
+					color:#fff;
+
+				}
+			}
+		}
+		.side-menu-container{
+			.slide-in{
+				background-color:$primary_color;
+				li{
+					a,a[aria-expanded='false']{
+						color:#fff;		
+						&:hover, &:focus{
+						background-color:$secundary_color;
+						}
+					}
+				}
+				
+			}
+		}
+	}
+
+nav{
+	
+.container{
+			padding-left:0px;
+			padding-right:0px;
+		}
+	#navbar{
+		background-color:$primary_color;
+		ul{
+			background-color:$primary_color;
+			.open{
+				.dropdown-toggle{
+					background-color:$secundary_color;
+				}
+			}
+			li{
+				
+				ul{
+					background-color:$primary_color;
+				}
+				a{
+					&:hover{
+						background-color:$secundary_color;
+					}
+					color:#fff;		
+				}
+			}
+		}
+	}
+}
+
+	#body{
+		background-color:#fff;
+		@include border-shadow();
+		#wrap-block{
+			margin-bottom: 10px;
+		}
+		.breadcrumb{
+				background-color:transparent;
 			}
 
 		.section{
-
 			 	.panel-default{
 				@include border-shadow();
 		 	}
@@ -73,4 +147,7 @@ body{
 	@import"_post";
 }
 
-
+@import "_phone";
+@import "_tablet";
+@import "_desktop";
+@import "_tv";

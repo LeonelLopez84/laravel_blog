@@ -21,29 +21,6 @@ body {
 }
 
 #front {
-  /* 
-    Sometimes the sub menus get too large for the page and prevent the menu from scrolling, limiting functionality
-    A quick fix is to change .side-menu to 
-
-    -> position:absolute
-    
-    and uncomment the code below.
-    You also need to uncomment 
-    
-    -> <div class="absolute-wrapper"> </div> in the html file
-
-    you also need to tweek the animation. Just uncomment the code in that section
-    --------------------------------------------------------------------------------------------------------------------
-    If you want to make it really neat i suggest you look into an alternative like http://areaaperta.com/nicescroll/
-    This will allow the menu to say fixed on body scoll and scoll on the side bar if it get to large
-*/
-  /*.absolute-wrapper{
-    position: fixed;
-    width: 300px;
-    height: 100%;
-    background-color: #f8f8f8;
-    border-right: 1px solid #e7e7e7;
-}*/
   /* Main body section */
   /* small screen */
 }
@@ -56,7 +33,7 @@ body {
   position: fixed;
   width: 300px;
   height: 100%;
-  background-color: #f8f8f8;
+  background-color: #028fcc;
   border-right: 1px solid #e7e7e7;
   z-index: 100;
 }
@@ -289,7 +266,7 @@ body {
     top: 43px;
     height: 100%;
     border-right: 1px solid #e7e7e7;
-    background-color: #f8f8f8;
+    background-color: #028fcc;
     -webkit-animation: slideout 300ms forwards;
     animation: slideout 300ms forwards;
     -webkit-transform-style: preserve-3d;
@@ -367,29 +344,90 @@ body {
   }
 }
 
-#front .container-fluid {
-  margin-top: 60px;
+#front #side-navbar {
+  background-color: #028fcc;
+}
+
+#front #side-navbar .navbar-header {
+  background-color: #028fcc;
+}
+
+#front #side-navbar .navbar-header .brand-wrapper {
+  background-color: #028fcc;
+}
+
+#front #side-navbar .navbar-header .brand-wrapper .navbar-toggle {
+  background-color: #028fcc;
+}
+
+#front #side-navbar .navbar-header .brand-wrapper .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+#front #side-navbar .navbar-header .brand-wrapper a {
   background-color: inherit;
-}
-
-#front .container-fluid .breadcrumb {
-  border-radius: 0px;
-  background-color: #5bc0de;
-}
-
-#front .container-fluid .breadcrumb li {
   color: #fff;
 }
 
-#front .container-fluid .breadcrumb li a {
+#front #side-navbar .side-menu-container .slide-in {
+  background-color: #028fcc;
+}
+
+#front #side-navbar .side-menu-container .slide-in li a, #front #side-navbar .side-menu-container .slide-in li a[aria-expanded='false'] {
   color: #fff;
 }
 
-#front .container-fluid .section .panel-default {
+#front #side-navbar .side-menu-container .slide-in li a:hover, #front #side-navbar .side-menu-container .slide-in li a:focus, #front #side-navbar .side-menu-container .slide-in li a[aria-expanded='false']:hover, #front #side-navbar .side-menu-container .slide-in li a[aria-expanded='false']:focus {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#front nav .container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+#front nav #navbar {
+  background-color: #028fcc;
+}
+
+#front nav #navbar ul {
+  background-color: #028fcc;
+}
+
+#front nav #navbar ul .open .dropdown-toggle {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#front nav #navbar ul li ul {
+  background-color: #028fcc;
+}
+
+#front nav #navbar ul li a {
+  color: #fff;
+}
+
+#front nav #navbar ul li a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+#front #body {
+  background-color: #fff;
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
 }
 
-#front .container-fluid .section .interes {
+#front #body #wrap-block {
+  margin-bottom: 10px;
+}
+
+#front #body .breadcrumb {
+  background-color: transparent;
+}
+
+#front #body .section .panel-default {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+}
+
+#front #body .section .interes {
   background-color: #5bc0de;
   color: #fff;
   padding: 10px;
@@ -450,6 +488,30 @@ body {
   color: #FFF;
   padding: 10px 15px;
   margin-top: 5px;
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+  #body {
+    padding-top: 50px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
+  #body {
+    padding-top: 100px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) and (orientation: landscape) {
+  #body {
+    padding-top: 100px;
+  }
+}
+
+@media (min-width: 1200px) and (orientation: landscape) {
+  #body {
+    padding-top: 100px;
+  }
 }
 
 /*# sourceMappingURL=app.css.map */
