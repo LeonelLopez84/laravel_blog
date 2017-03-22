@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $table="categories";
 
-    protected $fillable=["name",'category_id'];
+    protected $fillable=["name",'slug','category_id'];
 
     public function upcategory()
     {
@@ -32,12 +32,12 @@ class Category extends Model
 
     public function scopeSearchPadreCategory($query, $padre)
     {
-        return $query->where('name','=',"$padre"); 
+        return $query->where('slug','=',"$padre"); 
     }
 
-    public function scopeSearchCategory($query, $name)
+    public function scopeSearchCategory($query, $slug)
     {
-        return $query->where('name','=',"$name"); 
+        return $query->where('slug','=',"$slug"); 
     }
 
 

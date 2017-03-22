@@ -30,7 +30,7 @@
                     @foreach($category as $cat)
                       @if($cat->articles->count())
                         <li>
-                          <a href="{{url('categories/'.$cat->upcategory->name."/$cat->name")}}">
+                          <a href="{{url('categories/'.$cat->upcategory->slug."/$cat->slug")}}">
                             <span class="badge"> {{$cat->articles->count()}}</span> 
                               {{$cat->name}}
                             
@@ -53,8 +53,8 @@
         </div>
       {{Form::close()}}
       <ul class="nav navbar-nav navbar-right">
-          <li><a href=""><i class="fa fa-twitter"></i></a></li>
-          <li><a href=""><i class="fa fa-facebook"></i></a></li>
+          <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ request()->fullUrl() }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://twitter.com/intent/tweet?url={{ request()->fullUrl() }}"><i class="fa fa-facebook"></i></a></li>
       </ul>
   </div>
   </div>

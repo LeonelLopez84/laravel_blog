@@ -19,9 +19,13 @@ class AddArticlesTable extends Migration
             $table->text('preview');
             $table->text('content');
             $table->string('slug',1000);
+            $table->integer('shares')->default('0');
+            $table->integer('visits')->default('0');
+            $table->integer('status_id')->default('1');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
 
+            $table->foreign('status_id')->references('id')->on('status')->onDelete('no action')->onUpdate('no action');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('no action')->onUpdate('no action');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('no action')->onUpdate('no action');
 

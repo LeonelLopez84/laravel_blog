@@ -37,7 +37,7 @@ class CategoryRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'=>'min:5|required|unique:categories',
+                    'name'=>'min:2|required|unique:categories',
                     'category_id'=>'required'
                 ];
             }

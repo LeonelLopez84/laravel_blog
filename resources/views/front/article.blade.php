@@ -2,11 +2,15 @@
 
 @section("title",$article->title)
  
- @section('breadcrumbs',Breadcrumbs::render('post',$article->category->upcategory->name,$article->category->name,$article->title))
+ @section('breadcrumbs',Breadcrumbs::render('post',$article))
 
 @section('content')
 
-  @yield('breadcrumbs')
+<div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            @yield('breadcrumbs')
+        </div>
+    </div>
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
         <div class="row">
@@ -18,10 +22,12 @@
 					<div class="panel-body img-body" >
 						<p class="text-right">Por:<a href="https://twitter.com/{{$article->user->twitter_user}}">{{$article->user->twitter_user}}</a></p>
 						<p class="text-right">{{$article->created_at->format('l jS \\of F Y')}}</p>
-						@foreach($article->images as $img)
-							<img src="{{url("/articles/images/$img->name")}}" alt="" class="img-thumbnail img-reponsive">
-							@break
-						 @endforeach
+						@include('front.partials.share', [
+						    'url' => request()->fullUrl(),
+						    'description' => $article->title,
+						    'image' => url("/articles/images/".$article->images->first()->name)
+						])
+							<img src="{{url("/articles/images/".$article->images->first()->name)}}" alt="" class="img-thumbnail img-reponsive">
 						 <blockquote>
 							{!! $article->content !!}
 						</blockquote>
@@ -63,7 +69,7 @@
 
 				@foreach($related as $relate)
 	                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-	                   @include('front.partials.article2',['article'=>$relate])
+	                   @include('front.partials.article',['article'=>$relate])
 	                </div>
             	@endforeach
 	

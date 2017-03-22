@@ -332,3 +332,38 @@
     margin: 0;
   }
 }
+/// MIO
+
+  #side-navbar{
+    background-color:$primary_color;
+    .navbar-header{
+      background-color:$primary_color;
+      .brand-wrapper{
+        background-color:$primary_color;
+        .navbar-toggle{
+          background-color:$primary_color;
+          .icon-bar{
+            background-color:$font_color;
+          }
+        }
+        a{
+          background-color:inherit;
+          color:$font_color;
+        }
+      }
+    }
+    .side-menu-container{
+      .slide-in{
+        background-color:$primary_color;
+        li{
+          a,a[aria-expanded='false']{
+            color:$font_color;    
+            &:hover, &:focus{
+            background-color:$secundary_color;
+            }
+          }
+        }
+        
+      }
+    }
+  }

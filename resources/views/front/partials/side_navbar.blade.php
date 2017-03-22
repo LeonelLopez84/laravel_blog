@@ -66,7 +66,7 @@
                                 @foreach($category as $cat)
                                     @if($cat->articles->count())
                                         <li>
-                                          <a href="{{url('categories/'.$cat->upcategory->name."/$cat->name")}}">
+                                          <a href="{{url('categories/'.$cat->upcategory->slug."/$cat->slug")}}">
                                           <span class="badge"> {{$cat->articles->count()}}</span> 
                                             {{$cat->name}}
                                           </a>

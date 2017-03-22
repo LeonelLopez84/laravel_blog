@@ -2,14 +2,29 @@
 
 @section("title","Blog Laravel")
 
+@if(isset($search))
+    @section('breadcrumbs', Breadcrumbs::render('search',$search))
+    @section('home_title')
+       Resultados para "{{$search}}"
+    @endsection
+@else
+    @section('breadcrumbs', Breadcrumbs::render('home'))
+    @section('home_title')
+       {{trans('app.home_title')}}
+    @endsection
+@endif
+
 @section('content')
 
 @include('front.partials.wrap_block')
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        @yield('breadcrumbs')
+    </div>
+</div>
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-md-8 col-md-8">
-        @section('home_title')
-            {{trans('app.home_title')}}
-        @endsection
 
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -20,7 +35,7 @@
         <div class="row">
             @foreach($articles as $article)
                 <div class="col-xs-12 col-sm-6 col-md-6 col-ld-6">
-                    @include('front.partials.article2',['article'=>$article])
+                    @include('front.partials.article',['article'=>$article])
                 </div>
             @endforeach
         </div>

@@ -8,7 +8,7 @@ class Tag extends Model
 {
     protected $table="tags";
 
-    protected $fillable=["name"];
+    protected $fillable=["name",'slug'];
 
     public function articles()
     {
@@ -20,8 +20,8 @@ class Tag extends Model
     	return $query->where('name','LIKE',"%{$name}%");
     }
 
-    public function scopeSearchTag($query, $name)
+    public function scopeSearchTag($query, $slug)
     {
-        return $query->where('name','=',"$name"); 
+        return $query->where('slug','=',"$slug"); 
     }
 }

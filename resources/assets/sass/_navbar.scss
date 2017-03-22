@@ -1,0 +1,25 @@
+#navbar{
+		background-color:$primary_color;
+		ul{
+			background-color:$primary_color;
+			.open{
+				.dropdown-toggle{
+					background-color:$secundary_color;
+				}
+			}
+			li{
+				ul{
+					background-color:$primary_color;
+				}
+				a{
+					&:hover{
+						background-color:$secundary_color;
+					}
+					color:$font_color;		
+				}
+			}
+		}
+		.form-control, button{
+			border-radius:0px;
+		}
+	}

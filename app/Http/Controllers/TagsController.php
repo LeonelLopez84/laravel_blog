@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\TagsRequest;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Str;
 use App\Tag;
 
 class TagsController extends Controller
@@ -43,7 +44,7 @@ class TagsController extends Controller
     public function store(TagsRequest $request)
     {
         $tag = new Tag($request->all());
-
+        $tag->slug = Str::slug($request->name);
         $tag->save();
 
         Flash::success("El Tag <b>$tag->name</b> fue guardado");
@@ -85,6 +86,7 @@ class TagsController extends Controller
     {
     	$tag=Tag::find($id);
         $tag->fill($request->all());
+        $tag->slug = Str::slug($request->name);
         $tag->save();
         Flash::success('El tag <b>'.$tag->name.'</b> ha sido editado');
         return redirect()->route('tags.index');

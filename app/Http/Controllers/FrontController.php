@@ -31,7 +31,9 @@ class FrontController extends Controller
     public function index(Request $request)
     {
 
-        $articles=Article::SearchArticle($request->search)->orderBy('created_at','DESC')->paginate(6);
+        $articles=Article::SearchArticle($request->search)
+                        ->where('status_id', '=', '2')
+                        ->orderBy('created_at','DESC')->paginate(6);
     
         return view('front.home')
                 ->with('articles',$articles)
@@ -40,39 +42,40 @@ class FrontController extends Controller
     }
 
 
-    public function searchSubCategory($padre,$category)
+    public function searchSubCategory($padre,$slug)
     {
-        $category=Category::SearchCategory($category)->first();
-        $articles=$category->articles()->paginate(10);
+        $category=Category::SearchCategory($slug)->first();
+        $articles=$category->articles()->where('status_id', '=', '2')->paginate(10);
 
         SEO::setTitle($category->name);
         SEO::setDescription($category->name);
-        SEO::opengraph()->setUrl(url('/categories/'.$category->name));
-        SEO::setCanonical(url('/categories/'.$category->name));
+        SEO::opengraph()->setUrl(url('/categories/'.$category->slug));
+        SEO::setCanonical(url('/categories/'.$category->slug));
         SEO::opengraph()->addProperty('type', 'categories');
+
         return view('front.subcategory')
                 ->with('articles',$articles)
-                ->with('padre',$padre)
-                ->with('category',$category)
+                ->with('category', $category)
                 ->with('search','');
     }
 
-     public function searchTag($name)
+     public function searchTag($slug)
     {
-        $tag=Tag::SearchTag($name)->first();
-        $articles=$tag->articles()->paginate(10);
-
+        $tag=Tag::SearchTag($slug)->first();
+        $articles=$tag->articles()
+                        ->where('status_id', '=', '2')
+                        ->paginate(10);
+        
         SEO::setTitle($tag->name);
         SEO::setDescription($tag->name);
-        SEO::opengraph()->setUrl(url('/tags/'.$tag->name));
-        SEO::setCanonical(url('/tags/'.$tag->name));
+        SEO::opengraph()->setUrl(url('/tags/'.$tag->slug));
+        SEO::setCanonical(url('/tags/'.$tag->slug));
         SEO::opengraph()->addProperty('type', 'tags');
         
-
         return view('front.tag')
                 ->with('articles',$articles)
                 ->with('padre','Tag')
-                ->with('name',$name)
+                ->with('tag', $tag)
                 ->with('search','');
 
     }
@@ -81,7 +84,10 @@ class FrontController extends Controller
     {
     	$article = Article::where('slug','=',$slug)->first();
 
-        $related=Article::where('category_id','=',$article->category_id)->inRandomOrder()->take(3)->get();
+        $related=Article::where('category_id','=',$article->category_id)
+                            ->where('status_id', '=', '2')
+                            ->inRandomOrder()
+                            ->take(3)->get();
 
         SEO::setTitle($article->title);
         SEO::setDescription($article->title);

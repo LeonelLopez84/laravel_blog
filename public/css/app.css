@@ -25,6 +25,11 @@ body {
   /* small screen */
 }
 
+#front .badge {
+  background-color: #fff;
+  color: #333;
+}
+
 #front :focus {
   outline: none;
 }
@@ -413,6 +418,10 @@ body {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+#front nav #navbar .form-control, #front nav #navbar button {
+  border-radius: 0px;
+}
+
 #front #body {
   background-color: #fff;
   box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
@@ -491,6 +500,30 @@ body {
   color: #FFF;
   padding: 10px 15px;
   margin-top: 5px;
+}
+
+#front .social-buttons a {
+  margin: 0px 5px;
+}
+
+#front .social-buttons a i {
+  font-size: 2em;
+}
+
+#front .social-buttons .facebook {
+  color: #3b5998;
+}
+
+#front .social-buttons .twitter {
+  color: #1da1f2;
+}
+
+#front .social-buttons .pinterest {
+  color: #bd081b;
+}
+
+#front .social-buttons .gplus {
+  color: #d43e34;
 }
 
 @media (max-width: 767px) and (orientation: portrait) {

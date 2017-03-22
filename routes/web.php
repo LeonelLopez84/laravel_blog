@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,35 +9,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::get('/',['as' => 'home', 
 				'uses' => 'FrontController@index']);
-
 Route::get('/articles/{slug}',['as' => 'articles', 
 								'uses' => 'FrontController@viewArticle']);
-
-Route::get('/categories/{padre}','FrontController@searchCategory');
-
-Route::get('/categories/{padre}/{name}','FrontController@searchSubCategory');
-
-Route::get('/tags/{name}', 'FrontController@searchTag');
-
+Route::get('/articles/addshare/{slug}',['as' => 'articles.share', 
+                                  'uses' => 'FrontController@addShare']);
+Route::get('/categories/{padre}/{slug}','FrontController@searchSubCategory');
+Route::get('/tags/{slug}', 'FrontController@searchTag');
 Route::group(['prefix'=>'admin'],function(){
-
 	Auth::routes();
-
 	Route::get('/', function () {
     	return view('admin.welcome');
 	});
-
 	Route::get('/home', 'AdminController@index');
-
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');
 	Route::resource('tags','TagsController');
 	Route::resource('articles','ArticlesController');
-
 });
 
 Route::get('articles/images/{filename}',function($filename){
@@ -68,19 +56,19 @@ Route::get('sitemap', function(){
 
     // set cache key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean)
     // by default cache is disabled
-    $sitemap->setCache('laravel.sitemap',5,true);
+    //$sitemap->setCache('laravel.sitemap',5,true);
 
     // check if there is cached sitemap and build new only if is not
     if (!$sitemap->isCached())
     {
          // add item to the sitemap (url, date, priority, freq)
-         $sitemap->add(URL::to('/'), '2012-08-25T20:10:00+02:00', '1.0', 'daily');
+         $sitemap->add(URL::to('/'), date('Y-m-d H:i:s'), '1.0', 'daily');
          
          $categories = App\Category::orderBy('created_at', 'desc')->get();
          foreach ($categories as $category)
          {
             foreach($category->downcategory as $subcategory){
-			    $sitemap->add(URL::to('categories/'.$category->name.'/'.$subcategory->name), $category->updated_at,'0.9','monthly');
+			    $sitemap->add(URL::to('categories/'.$category->slug.'/'.$subcategory->slug), $category->updated_at,'0.9','monthly');
             }
 
          }
@@ -88,7 +76,7 @@ Route::get('sitemap', function(){
          $tags = App\Tag::orderBy('created_at', 'desc')->get();
          foreach ($tags as $tag)
          {
-			$sitemap->add(URL::to('/tags/'.$tag->name), $tag->updated_at,'0.9','monthly');
+			$sitemap->add(URL::to('/tags/'.$tag->slug), $tag->updated_at,'0.9','daily');
 
          }
 

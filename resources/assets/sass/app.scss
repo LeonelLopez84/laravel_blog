@@ -5,8 +5,6 @@
 	    box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.25);
 	}
 
-
-
 body{
 	background-color:#f5f5f5;
 }
@@ -30,47 +28,12 @@ body{
 	} 
 }
 
-
-
 #front{
-
-	@import "_sidenavbar";
-
-	#side-navbar{
-		background-color:$primary_color;
-		.navbar-header{
-			background-color:$primary_color;
-			.brand-wrapper{
-				background-color:$primary_color;
-				.navbar-toggle{
-					background-color:$primary_color;
-					.icon-bar{
-						background-color:$font_color;
-					}
-				}
-
-				a{
-					background-color:inherit;
-					color:#fff;
-
-				}
-			}
-		}
-		.side-menu-container{
-			.slide-in{
-				background-color:$primary_color;
-				li{
-					a,a[aria-expanded='false']{
-						color:$font_color;		
-						&:hover, &:focus{
-						background-color:$secundary_color;
-						}
-					}
-				}
-				
-			}
-		}
+	.badge{
+		background-color:#fff;
+		color:#333;
 	}
+	@import "_sidenavbar";
 
 nav{
 	
@@ -78,29 +41,8 @@ nav{
 			padding-left:0px;
 			padding-right:0px;
 		}
-	#navbar{
-		background-color:$primary_color;
-		ul{
-			background-color:$primary_color;
-			.open{
-				.dropdown-toggle{
-					background-color:$secundary_color;
-				}
-			}
-			li{
-				
-				ul{
-					background-color:$primary_color;
-				}
-				a{
-					&:hover{
-						background-color:$secundary_color;
-					}
-					color:$font_color;		
-				}
-			}
-		}
-	}
+
+	@import "_navbar";
 }
 
 	#body{
@@ -136,6 +78,7 @@ nav{
 	}
 
 	@import"_post";
+
 }
 
 @import "_phone";
