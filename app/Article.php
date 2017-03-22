@@ -15,6 +15,11 @@ class Article extends Model
     	return $this->belongsTo('App\Category');
     }
 
+    public function statu()
+    {
+        return $this->belongsTo('App\Statu');
+    }
+
     public function user()
     {
     	return $this->belongsTo('App\User');

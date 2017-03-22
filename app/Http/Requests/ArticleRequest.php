@@ -41,7 +41,8 @@ class ArticleRequest extends FormRequest
                     'preview'    => 'min:10|required',
                     'content'    => 'min:10|required',
                     'tags'       => 'required|array|min:1',
-                    'image'      => 'required|image'
+                    'image'      => 'required|image',
+                    'status_id'  => 'required'
                 ];
             }
             case 'PUT':
@@ -52,7 +53,8 @@ class ArticleRequest extends FormRequest
                    'category_id'=> 'required',
                    'preview'    => 'min:10|required',
                    'content'    => 'min:10|required',
-                   'tags'       => 'required|array|min:1'
+                   'tags'       => 'required|array|min:1',
+                   'status_id'  => 'required'
                 ];
             }
             default:break;

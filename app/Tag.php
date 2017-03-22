@@ -24,4 +24,9 @@ class Tag extends Model
     {
         return $query->where('slug','=',"$slug"); 
     }
+    
+    public function statu()
+    {
+        return $this->belongsTo('App\Statu');
+    }
 }

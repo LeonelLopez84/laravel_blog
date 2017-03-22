@@ -18,7 +18,12 @@
 
 				<div class="form-group">
 					{{Form::label('category_id','Categoría Padre')}}
-					{{Form::select('category_id',$categories, $category->category_id,['class'=>'form-control','placeholder'=>'Seleccione una opción','required'] ) }}
+					{{Form::select('category_id',$categories, $category->category_id,['class'=>'form-control','required'] ) }}
+				</div>
+
+				<div class="form-group">
+					{{Form::label('status_id','Estatus')}}
+					{{Form::select('status_id',$status,$category->status_id,['class'=>'form-control','required'] ) }}
 				</div>
 
 				<div class="form-group pull-right">

@@ -45,8 +45,9 @@ class CategoryRequest extends FormRequest
             case 'PATCH':
             {
                 return [
-                   'name'=> 'min:5|required|unique:categories,name,'.$category->id,
-                   'category_id'=>'required'
+                   'name'=> 'min:2|required|unique:categories,name,'.$category->id,
+                   'category_id'=>'required',
+                   'status_id'=>'required'
                 ];
             }
             default:break;

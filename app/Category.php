@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $table="categories";
 
-    protected $fillable=["name",'slug','category_id'];
+    protected $fillable=["name",'slug','status_id','category_id'];
 
     public function upcategory()
     {
@@ -23,6 +23,11 @@ class Category extends Model
     public function articles()
     {
     	return $this->hasMany('App\Article');
+    }
+
+    public function statu()
+    {
+        return $this->belongsTo('App\Statu');
     }
 
     public function scopeSearch($query, $name)

@@ -37,14 +37,16 @@ class TagsRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'=>'min:5|required|unique:tags'
+                    'name'=>'min:2|required|unique:tags',
+                    'status_id'=>'required'
                 ];
             }
             case 'PUT':
             case 'PATCH':
             {
                 return [
-                   'name'=> 'min:5|required|unique:tags,name,'.$tag->id,
+                   'name'=> 'min:2|required|unique:tags,name,'.$tag->id,
+                   'status_id'=>'required'
                 ];
             }
             default:break;

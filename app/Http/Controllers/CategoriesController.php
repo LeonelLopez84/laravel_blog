@@ -7,6 +7,7 @@ use App\Http\Requests\CategoryRequest;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Str;
 use App\Category;
+use App\Statu;
 
 class CategoriesController extends Controller
 {
@@ -34,8 +35,12 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        $categories=Category::where('category_id','=','0')->orderBy('name','ASC')->pluck('name','id');
-        return view("admin.categories.create")->with('categories',$categories);
+        $categories=Category::where('category_id','=','0')
+                            ->orderBy('name','ASC')
+                            ->pluck('name','id')->toArray();
+        $categories= array_merge(array('0'=>'Selecione una Categoria'),$categories);
+        return view("admin.categories.create")
+                ->with('categories',$categories);
     }
 
     /**
@@ -76,11 +81,18 @@ class CategoriesController extends Controller
     public function edit($id)
     {
         $category=Category::find($id);
-        $categories=Category::where('category_id','=','0')->orderBy('name','ASC')->pluck('name','id');
-
+        $categories=Category::where('category_id','=','0')
+                    ->orderBy('name','ASC')
+                    ->pluck('name','id')
+                    ->toArray();
+        $status=Statu::orderBy('name','ASC')
+                    ->pluck('name','id')
+                    ->toArray();
+        $categories= array_merge(array('0'=>'Selecione una Categoria'),$categories);
         return view('admin.categories.edit')
                                     ->with('category',$category)
-                                    ->with('categories',$categories);
+                                    ->with('categories',$categories)
+                                    ->with('status',$status);
     }
 
     /**
