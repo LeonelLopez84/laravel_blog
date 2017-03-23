@@ -17,7 +17,7 @@ class AddCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('slug');
-            $table->integer('status_id')->default('1');
+            $table->integer('statu_id')->default('1');
             $table->integer("category_id")->unsigned()->default(0)->index();
 
             $table->foreign('status_id')->references('id')->on('status')->onDelete('no action')->onUpdate('no action');

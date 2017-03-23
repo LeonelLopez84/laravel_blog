@@ -8,7 +8,7 @@ class Category extends Model
 {
     protected $table="categories";
 
-    protected $fillable=["name",'slug','status_id','category_id'];
+    protected $fillable=["name",'slug','statu_id','category_id'];
 
     public function upcategory()
     {

@@ -11,7 +11,7 @@ class NavbarComposer
 	{
 
 		$categories=Category::where('category_id', '=', '0')
-							->where('status_id', '=', '2')
+							->where('statu_id', '=', '2')
                             ->orderBy('name','ASC')
                             ->get()
                             ->map(function($category){
@@ -19,7 +19,7 @@ class NavbarComposer
                             })->keyBy('name')->map(function($categories) {
                                 return $categories['categories'];
                             });
-		$tags = Tag::where('status_id', '=', '2')
+		$tags = Tag::where('statu_id', '=', '2')
                        ->orderBy('name','ASC')->get();
 
 		$view->with('categories',$categories)

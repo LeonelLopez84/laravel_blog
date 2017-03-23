@@ -21,7 +21,7 @@
 		<thead>
 			<tr><th>#</th>
 				<th>Nombre</th>
-				<th colspan="2">Actions</th>
+				<th colspan="3">Actions</th>
 			</tr>
 		</thead>
 
@@ -36,6 +36,12 @@
 					<td>
 						@include("admin.categories.delete",['id'=>$category->id])
 					</td>
+					<td>
+					<span class="label {{($category->statu->id==1)?'label-default':'label-success'}}">
+					 {{$category->statu->name}}
+					</span>
+					</td>
+					
 			</tr>
 			@endforeach
 		</tbody>

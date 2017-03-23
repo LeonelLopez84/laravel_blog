@@ -21,7 +21,7 @@ class AddArticlesTable extends Migration
             $table->string('slug',1000);
             $table->integer('shares')->default('0');
             $table->integer('visits')->default('0');
-            $table->integer('status_id')->default('1');
+            $table->integer('statu_id')->default('1');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
 

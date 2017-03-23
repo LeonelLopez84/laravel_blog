@@ -85,14 +85,11 @@ class CategoriesController extends Controller
                     ->orderBy('name','ASC')
                     ->pluck('name','id')
                     ->toArray();
-        $status=Statu::orderBy('name','ASC')
-                    ->pluck('name','id')
-                    ->toArray();
+        
         $categories= array_merge(array('0'=>'Selecione una Categoria'),$categories);
         return view('admin.categories.edit')
                                     ->with('category',$category)
-                                    ->with('categories',$categories)
-                                    ->with('status',$status);
+                                    ->with('categories',$categories);
     }
 
     /**

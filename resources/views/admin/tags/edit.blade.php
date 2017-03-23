@@ -15,6 +15,10 @@
 					{{Form::label('name','Nombre')}}
 					{{Form::text('name',$tag->name, ['class'=>'form-control','placeholder'=>'Nombre Completo','required'] ) }}
 				</div>
+				<div class="form-group">
+					{{Form::label('statu_id','Estatus')}}
+					{{Form::select('statu_id',$status,$tag->statu_id,['class'=>'form-control','required'] ) }}
+				</div>
 
 				<div class="form-group pull-right">
 					{{Form::submit('Editar',['class'=>'btn btn-primary']) }}

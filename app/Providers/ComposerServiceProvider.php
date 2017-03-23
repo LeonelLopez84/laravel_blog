@@ -20,6 +20,11 @@ class ComposerServiceProvider extends ServiceProvider
                         'front.subcategory',
                         'front.tag'
                         ],'App\Http\ViewComposers\NavbarComposer');
+
+        View::composer(['admin.articles.edit',
+                        'admin.categories.edit',
+                        'tags.edit',
+                        ],'App\Http\ViewComposers\AdminComposer');
     }
 
     /**

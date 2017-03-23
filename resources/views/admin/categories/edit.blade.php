@@ -22,8 +22,8 @@
 				</div>
 
 				<div class="form-group">
-					{{Form::label('status_id','Estatus')}}
-					{{Form::select('status_id',$status,$category->status_id,['class'=>'form-control','required'] ) }}
+					{{Form::label('statu_id','Estatus')}}
+					{{Form::select('statu_id',$status,$category->statu_id,['class'=>'form-control','required'] ) }}
 				</div>
 
 				<div class="form-group pull-right">

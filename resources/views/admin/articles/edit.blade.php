@@ -39,6 +39,11 @@
 				</div>
 
 				<div class="form-group">
+					{{Form::label('statu_id','Estatus')}}
+					{{Form::select('statu_id',$status,$article->statu_id,['class'=>'form-control','required'] ) }}
+				</div>
+
+				<div class="form-group">
 					{{Form::label('image','Imagen')}}
 					{{Form::file('image')}}
 				</div>
