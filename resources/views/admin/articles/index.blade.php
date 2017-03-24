@@ -42,7 +42,6 @@
 </div>
 </div>
 
-<td>
 <div class="row">
 <div class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4">
 	{{ $articles->render() }}
