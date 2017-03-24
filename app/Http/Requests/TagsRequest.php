@@ -38,7 +38,7 @@ class TagsRequest extends FormRequest
             {
                 return [
                     'name'=>'min:2|required|unique:tags',
-                    'status_id'=>'required'
+                    'statu_id'=>'required'
                 ];
             }
             case 'PUT':
@@ -46,7 +46,7 @@ class TagsRequest extends FormRequest
             {
                 return [
                    'name'=> 'min:2|required|unique:tags,name,'.$tag->id,
-                   'status_id'=>'required'
+                   'statu_id'=>'required'
                 ];
             }
             default:break;

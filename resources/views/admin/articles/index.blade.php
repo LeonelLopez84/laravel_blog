@@ -3,6 +3,8 @@
 @section("title","Lista de Articulos")
 
 @section('content')
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12">
 <div class="panel panel-default">
   <div class="panel-heading">@yield('title')</div>
   <div class="panel-body">
@@ -11,40 +13,39 @@
 
    	{{ Form::open(['route'=>'articles.index','method'=>'GET','class'=>'navbar-form pull-right']) }}
    		<div class="input-group">
-   			{{Form::text('title',$title,['class'=>'form-control','placeholder'=>'Buscar tag'])}}
+   			{{Form::text('title',$title,['class'=>'form-control','placeholder'=>'Buscar Articulo'])}}
    			<span class="input-group-btn">
    				{{Form::submit('Buscar',['class'=>'btn btn-default']) }}
       		</span>
    		</div>
    	{{Form::close()}}
-	<table class="table table-striped">
+	<table class="table table-striped" id="articles">
 		<thead>
-			<tr><th>#</th>
+			<tr><th>id</th>
 				<th>Nombre</th>
-				<th>Categoría</th>
 				<th>User</th>
-				<th colspan="2">Actions</th>
+				<th>UpCategory</th>
+				<th>Category</th>
+				<th>Estatus</th>
+				<th>Created</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 
 		<tbody>
-			@foreach($articles as $article)
-			<tr>
-				<td>{{$article->id}}</td>
-				<td>{{$article->title}}</td>
-				<td>{{$article->category->name}}</td>
-				<td>{{$article->user->name}}</td>
-				<td>
-					<a href="{{route('articles.edit',$article->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-					</td>
-					<td>
-						@include("admin.articles.delete",['id'=>$article->id])
-					</td>
-			</tr>
-			@endforeach
+			
 		</tbody>
 	</table>
-	{{ $articles->render() }}
+	
   </div>
+</div>
+</div>
+</div>
+
+<td>
+<div class="row">
+<div class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4">
+	{{ $articles->render() }}
+</div>
 </div>
 @endsection

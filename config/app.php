@@ -171,6 +171,7 @@ return [
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         //
 
@@ -236,6 +237,7 @@ return [
         'Flash' => Laracasts\Flash\Flash::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
         'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
+        'Datatables'=>Yajra\Datatables\Facades\Datatables::class
     ],
 
 ];

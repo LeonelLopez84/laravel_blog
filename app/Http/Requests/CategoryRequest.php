@@ -47,7 +47,7 @@ class CategoryRequest extends FormRequest
                 return [
                    'name'=> 'min:2|required|unique:categories,name,'.$category->id,
                    'category_id'=>'required',
-                   'status_id'=>'required'
+                   'statu_id'=>'required'
                 ];
             }
             default:break;

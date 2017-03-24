@@ -22,7 +22,9 @@ class CategoriesController extends Controller
      */
     public function index(Request $request)
     {
-         $categories=Category::search($request->name)->orderBy('name','ASC')->paginate(15);
+         $categories=Category::search($request->name)
+                    ->orderBy('name','ASC')
+                    ->paginate(10);
         return view('admin.categories.index')
                 ->with('categories',$categories)
                 ->with('name',$request->name);
@@ -85,8 +87,9 @@ class CategoriesController extends Controller
                     ->orderBy('name','ASC')
                     ->pluck('name','id')
                     ->toArray();
+        $categories[0] = 'Secciona una Categoría';
+        ksort($categories);
         
-        $categories= array_merge(array('0'=>'Selecione una Categoria'),$categories);
         return view('admin.categories.edit')
                                     ->with('category',$category)
                                     ->with('categories',$categories);

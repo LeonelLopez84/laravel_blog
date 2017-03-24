@@ -23,7 +23,7 @@ class ComposerServiceProvider extends ServiceProvider
 
         View::composer(['admin.articles.edit',
                         'admin.categories.edit',
-                        'tags.edit',
+                        'admin.tags.edit',
                         ],'App\Http\ViewComposers\AdminComposer');
     }
 

@@ -3,6 +3,8 @@
 @section("title","Lista de Tags")
 
 @section('content')
+<div class="row">
+<div class="col-sm-12 col-md-12 col-lg-12">
 <div class="panel panel-default">
   <div class="panel-heading">@yield('title')</div>
   <div class="panel-body">
@@ -21,7 +23,7 @@
 		<thead>
 			<tr><th>#</th>
 				<th>Nombre</th>
-				<th colspan="2">Actions</th>
+				<th colspan="3">Actions</th>
 			</tr>
 		</thead>
 
@@ -36,11 +38,23 @@
 					<td>
 						@include("admin.tags.delete",['id'=>$tag->id])
 					</td>
+					<td>
+						<span class="label {{($tag->statu->id==1)?'label-default':'label-success'}}">
+						 {{$tag->statu->name}}
+						</span>
+					</td>
 			</tr>
 			@endforeach
 		</tbody>
 	</table>
-	{{ $tags->render() }}
+	
   </div>
+</div>
+	</div>
+	</div>
+<div class="row">
+<div class="col-sm-offset-4 col-md-offset-4 col-lg-offset-4 col-sm-4 col-md-4 col-lg-4">
+{{ $tags->render() }}
+</div>
 </div>
 @endsection

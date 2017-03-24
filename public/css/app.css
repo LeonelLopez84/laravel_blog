@@ -8,7 +8,8 @@ body {
 
 #panel #body {
   overflow-y: auto;
-  max-height: 95.5vh;
+  margin-top: 8vh;
+  max-height: 87.5vh;
 }
 
 #panel .footer {
@@ -532,26 +533,26 @@ body {
 }
 
 @media (max-width: 767px) and (orientation: landscape) {
-  #body {
+  #front #body {
     padding-top: 60px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) and (orientation: landscape) {
-  #body {
-    padding-top: 100px;
+  #front #body {
+    margin-top: 100px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) and (orientation: landscape) {
-  #body {
-    padding-top: 100px;
+  #front #body {
+    margin-top: 100px;
   }
 }
 
 @media (min-width: 1200px) and (orientation: landscape) {
-  #body {
-    padding-top: 100px;
+  #front #body {
+    margin-top: 100px;
   }
 }
 

@@ -20,9 +20,13 @@ class TagsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $tags=Tag::search($request->name)->orderBy('name','ASC')->paginate(15);
-        return view('admin.tags.index')->with('tags',$tags)->with('name',$request->name);
+    {   
+        $tags=Tag::search($request->name)
+                    ->orderBy('name','ASC')
+                    ->paginate(10);
+        return view('admin.tags.index')
+                        ->with('tags',$tags)
+                        ->with('name',$request->name);
     }
 
     /**

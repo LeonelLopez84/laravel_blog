@@ -6,7 +6,9 @@
 }
 
 @media (max-width: $screen-xs-max) and (orientation: landscape){
-#body{
- 		padding-top:60px;
+	#front{
+		#body{
+ 			padding-top:60px;
+ 		}
  	}
 }

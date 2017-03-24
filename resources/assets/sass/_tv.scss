@@ -3,7 +3,9 @@
 	
 }
 @media (min-width: $screen-lg-min) and (orientation: landscape){ 
-	#body{
- 		padding-top:100px;
+	#front{
+		#body{
+ 			margin-top:100px;
+ 		}
  	}
 }

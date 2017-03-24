@@ -10,6 +10,7 @@ use App\Tag;
 use Carbon\Carbon;
 use SEO;
 
+
 class FrontController extends Controller
 {
     /**
@@ -32,7 +33,7 @@ class FrontController extends Controller
     {
 
         $articles=Article::SearchArticle($request->search)
-                        ->where('status_id', '=', '2')
+                        ->where('statu_id', '=', '2')
                         ->orderBy('created_at','DESC')->paginate(6);
     
         return view('front.home')
@@ -45,7 +46,7 @@ class FrontController extends Controller
     public function searchSubCategory($padre,$slug)
     {
         $category=Category::SearchCategory($slug)->first();
-        $articles=$category->articles()->where('status_id', '=', '2')->paginate(10);
+        $articles=$category->articles()->where('statu_id', '=', '2')->paginate(10);
 
         SEO::setTitle($category->name);
         SEO::setDescription($category->name);
@@ -63,7 +64,7 @@ class FrontController extends Controller
     {
         $tag=Tag::SearchTag($slug)->first();
         $articles=$tag->articles()
-                        ->where('status_id', '=', '2')
+                        ->where('statu_id', '=', '2')
                         ->paginate(10);
         
         SEO::setTitle($tag->name);
@@ -85,7 +86,7 @@ class FrontController extends Controller
     	$article = Article::where('slug','=',$slug)->first();
 
         $related=Article::where('category_id','=',$article->category_id)
-                            ->where('status_id', '=', '2')
+                            ->where('statu_id', '=', '2')
                             ->inRandomOrder()
                             ->take(3)->get();
 

@@ -10,6 +10,9 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('bower_components/chosen/chosen.css')}}">
     <link rel="stylesheet" href="{{asset('bower_components/trumbowyg/dist/ui/trumbowyg.min.css')}}">    
+    <link rel="stylesheet" type="text/css" href="{{ url('https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css') }}" />
+
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,6 +44,46 @@
     <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"  ></script>
     <script src="{{asset('bower_components/chosen/chosen.jquery.js')}}"></script>
     <script src="{{asset('bower_components/trumbowyg/dist/trumbowyg.min.js')}}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url('https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js') }}"></script>
+    
 	<script src="{{asset('js/app.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+        var table=$('#articles').DataTable( {
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: "articles/api",
+                type: "post"
+            },
+            columns: [
+                { data: "ID",name:"ID" },
+                { data: "Title",name:"Title" },
+                { data: "User", name:"User" },
+                { data: "UpCategory", name:"UpCategory" },
+                { data: "Category", name:"Category" },
+                { data: "Estatus",name:"Estatus"},
+                { data: "Created",name:"Created"},
+                { data: "Edit",name:"Edit"}
+            ],
+            columnDefs: [
+                {
+                    "render": function (data, type, row) {
+                        return "<a href='articles/"+data+"/edit' class='btn btn-info'><i class='fa fa-pencil'></i></a>";
+                    },
+                    "targets": 7
+                },
+                {
+                    "searchable":false,
+                    "targets":[0,3,4,5,6,7]
+                }
+            ]
+    });
+});    
+    </script>
+
 </body>
 </html>

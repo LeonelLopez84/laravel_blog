@@ -10,6 +10,9 @@ use App\Article;
 use App\Tag;
 use App\Category;
 use App\Image;
+use App\Statu;
+use Carbon\Carbon;
+use DB;
 
 class ArticlesController extends Controller
 {
@@ -31,7 +34,26 @@ class ArticlesController extends Controller
                 ->with('articles',$articles)
                 ->with('title',$request->title);
     }
-    
+
+    public function api()
+    {
+        $model= DB::table('articles AS A')
+        ->join('categories AS C', 'A.category_id', '=', 'C.id')
+        ->join('users AS U', 'A.user_id', '=', 'U.id')
+        ->join('status AS S', 'A.statu_id', '=', 'S.id')
+        ->leftJoin('categories AS P', 'C.category_id', '=', 'P.id')
+        ->select('A.id AS ID',
+                    'A.title as Title',
+                    'U.name as User',
+                    'P.name as UpCategory',
+                    'C.name as Category',
+                    "S.name as Estatus",
+                    'A.created_at AS Created',
+                    'A.id AS Edit');
+
+
+        return app('datatables')->queryBuilder($model)->make(true); 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -148,6 +170,7 @@ class ArticlesController extends Controller
         $article->preview = $request->preview;
         $article->category_id = $request->category_id;
         $article->content = $request->content;
+        $article->statu_id = $request->statu_id;
         $article->slug = Str::slug($request->title);
         $article->user_id = \Auth::user()->id;
         $article->save();
