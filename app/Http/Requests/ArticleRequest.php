@@ -41,8 +41,7 @@ class ArticleRequest extends FormRequest
                     'preview'    => 'min:10|required',
                     'content'    => 'min:10|required',
                     'tags'       => 'required|array|min:1',
-                    'image'      => 'required|image',
-                    'statu_id'  => 'required'
+                    'image'      => 'required|image'
                 ];
             }
             case 'PUT':

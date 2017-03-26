@@ -40,7 +40,7 @@ class CategoriesController extends Controller
         $categories=Category::where('category_id','=','0')
                             ->orderBy('name','ASC')
                             ->pluck('name','id')->toArray();
-        $categories= array_merge(array('0'=>'Selecione una Categoria'),$categories);
+        $categories[0]='Selecione una Categoria';
         return view("admin.categories.create")
                 ->with('categories',$categories);
     }
@@ -53,7 +53,6 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-
         $category = new Category($request->all());
         $category->slug = Str::slug($request->name);
         $category->save();

@@ -17,10 +17,10 @@ class AddCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('slug');
-            $table->integer('statu_id')->default('1');
+            $table->integer('statu_id')->unsigned()->default(1)->index();
             $table->integer("category_id")->unsigned()->default(0)->index();
 
-            $table->foreign('status_id')->references('id')->on('status')->onDelete('no action')->onUpdate('no action');
+            $table->foreign('statu_id')->references('id')->on('status')->onDelete('no action')->onUpdate('no action');
             $table->timestamps();
         });
     }

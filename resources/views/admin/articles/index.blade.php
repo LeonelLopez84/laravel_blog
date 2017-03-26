@@ -11,14 +11,7 @@
    
    	<a href="{{route('articles.create')}}" class="pull-left btn btn-success"><i class="fa fa-plus"></i></a>
 
-   	{{ Form::open(['route'=>'articles.index','method'=>'GET','class'=>'navbar-form pull-right']) }}
-   		<div class="input-group">
-   			{{Form::text('title',$title,['class'=>'form-control','placeholder'=>'Buscar Articulo'])}}
-   			<span class="input-group-btn">
-   				{{Form::submit('Buscar',['class'=>'btn btn-default']) }}
-      		</span>
-   		</div>
-   	{{Form::close()}}
+   
 	<table class="table table-striped" id="articles">
 		<thead>
 			<tr><th>id</th>

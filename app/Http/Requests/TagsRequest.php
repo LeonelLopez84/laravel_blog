@@ -37,8 +37,7 @@ class TagsRequest extends FormRequest
             case 'POST':
             {
                 return [
-                    'name'=>'min:2|required|unique:tags',
-                    'statu_id'=>'required'
+                    'name'=>'min:2|required|unique:tags'
                 ];
             }
             case 'PUT':

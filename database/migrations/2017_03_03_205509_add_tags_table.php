@@ -17,7 +17,7 @@ class AddTagsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->integer('statu_id')->default('1');
+            $table->integer('statu_id')->unsigned()->default(1)->index();
             $table->foreign('statu_id')->references('id')->on('status')->onDelete('no action')->onUpdate('no action');
             $table->timestamps();
         });
