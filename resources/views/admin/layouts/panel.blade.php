@@ -59,17 +59,45 @@
                 url: "articles/api",
                 type: "post"
             },
+
             columns: [
-                { data: "ID",name:"ID" },
-                { data: "Title",name:"Title" },
-                { data: "User", name:"User" },
-                { data: "UpCategory", name:"UpCategory" },
-                { data: "Category", name:"Category" },
-                { data: "Estatus",name:"Estatus"},
-                { data: "Created",name:"Created"},
-                { data: "Edit",name:"Edit"}
+                 { data: "id", name:"articles.id"},
+                { data: "title",name:"articles.title"},
+                { data: "user", name:"users.name"},
+                { data: "padre" ,name:"padres.name"},
+                { data: "category", name:"categories.name" },
+                { data: "created_at",name:"articles.created_at"},
+                { data: "status", name:"status.name"},
+                { data: "id",name:"articles.id"}
             ],
+             dom:"Blfrtip",
+            buttons: [
+                    {
+                        extend: 'pdf',
+                        text: 'Exportar PDF',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    },
+                    {   extend: 'excelHtml5',
+                        text: 'Exportar a Excel',
+                        exportOptions: {
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                    }
+                ],
             columnDefs: [
+             {
+                    "render": function (data, type, row) {
+                        var label=(data=='Invisible')?'label-default':'label-success';
+                        return "<span class='label "+label+"'>"+data+"</span>";
+                    },
+                    "targets": 6
+                },
                 {
                     "render": function (data, type, row) {
                         return "<a href='articles/"+data+"/edit' class='btn btn-info'><i class='fa fa-pencil'></i></a>";
@@ -77,8 +105,8 @@
                     "targets": 7
                 },
                 {
-                    "searchable":false,
-                    "targets":[0,3,4,5,6,7]
+                    "searchable":true,
+                    "targets":[1,2,3,4]
                 }
             ]
     });

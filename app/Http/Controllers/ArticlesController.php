@@ -37,19 +37,19 @@ class ArticlesController extends Controller
 
     public function api()
     {
-        $model= DB::table('articles AS A')
-        ->join('categories AS C', 'A.category_id', '=', 'C.id')
-        ->join('users AS U', 'A.user_id', '=', 'U.id')
-        ->join('status AS S', 'A.statu_id', '=', 'S.id')
-        ->leftJoin('categories AS P', 'C.category_id', '=', 'P.id')
-        ->select('A.id AS ID',
-                    'A.title as Title',
-                    'U.name as User',
-                    'P.name as UpCategory',
-                    'C.name as Category',
-                    "S.name as Estatus",
-                    'A.created_at AS Created',
-                    'A.id AS Edit');
+        $model= DB::table('articles')
+        ->join('categories', 'articles.category_id', '=', 'categories.id')
+        ->join('users', 'articles.user_id', '=', 'users.id')
+        ->join('status', 'articles.statu_id', '=', 'status.id')
+        ->leftJoin('categories as padres', 'categories.category_id', '=', 'padres.id')
+        ->select('articles.id',
+                    'articles.title',
+                    'users.name as user',
+                    'padres.name as padre',
+                    'categories.name as category',
+                    "status.name as status",
+                    'articles.created_at',
+                    'articles.id');
 
 
         return app('datatables')->queryBuilder($model)->make(true); 

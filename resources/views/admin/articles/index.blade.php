@@ -19,8 +19,8 @@
 				<th>User</th>
 				<th>UpCategory</th>
 				<th>Category</th>
-				<th>Estatus</th>
 				<th>Created</th>
+				<th>Estatus</th>
 				<th>Actions</th>
 			</tr>
 		</thead>
