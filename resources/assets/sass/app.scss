@@ -19,13 +19,13 @@ body{
     	max-height: 87.5vh;
 	} 
 	form{
-		.img-thumbnail{
+		.panel-body{
 			min-height:50vh;
 			background-repeat:no-repeat;
     		background-position: center top; 
     		background-size:contain;
-			margin:10px 0px;
-		
+			margin-top:10px;
+			margin-bottom:10px;
 		}
 	}
 
@@ -89,6 +89,7 @@ nav{
 
 	@import"_post";
 
+	@import "_footer";
 }
 
 @import "_phone";
