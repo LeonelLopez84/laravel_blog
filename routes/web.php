@@ -27,6 +27,7 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::resource('categories','CategoriesController');
 	Route::resource('tags','TagsController');
 	Route::resource('articles','ArticlesController');
+    Route::resource('images','ImagesController');
     Route::post('/articles/api', 'ArticlesController@api');
 });
 

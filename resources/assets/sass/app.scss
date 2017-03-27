@@ -18,6 +18,16 @@ body{
 		margin-top: 8vh;
     	max-height: 87.5vh;
 	} 
+	form{
+		.img-thumbnail{
+			min-height:50vh;
+			background-repeat:no-repeat;
+    		background-position: center top; 
+    		background-size:contain;
+			margin:10px 0px;
+		
+		}
+	}
 
 	.footer {
 		position: absolute;

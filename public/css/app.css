@@ -12,6 +12,14 @@ body {
   max-height: 87.5vh;
 }
 
+#panel form .img-thumbnail {
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+  margin: 10px 0px;
+}
+
 #panel .footer {
   position: absolute;
   bottom: 0;

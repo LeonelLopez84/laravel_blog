@@ -8,7 +8,7 @@
 
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			<div class="panel panel-default">
+			<div class="panel panel-default" id="article">
 			  <div class="panel-heading">@yield('title')</div>
 			  <div class="panel-body">
 			{{ Form::open(['route' => ['articles.update',$article->id],"method"=>"PUT",'files'=>true]) }}
@@ -42,16 +42,21 @@
 					{{Form::label('statu_id','Estatus')}}
 					{{Form::select('statu_id',$status,$article->statu_id,['class'=>'form-control','required'] ) }}
 				</div>
-
 				<div class="form-group">
 					{{Form::label('image','Imagen')}}
-					{{Form::file('image')}}
+					{{Form::file('image',['id'=>$article->id])}}
 				</div>
-
+				<div class="form-group">
+					<div class="row image-container" >
+						@foreach($article->images as $image)
+							@include("admin.partials.image",['image',$image])
+						@endforeach
+					</div>
+				</div>
 				<div class="form-group">
 					{{Form::submit('Actualizar',['class'=>'btn btn-info']) }}
 				</div>
-			{{ Form::close() }}
+				{{ Form::close() }}
 				</div>
 			</div>
 		</div>
