@@ -17,6 +17,9 @@ Route::get('/articles/addshare/{slug}',['as' => 'articles.share',
                                   'uses' => 'FrontController@addShare']);
 Route::get('/categories/{padre}/{slug}','FrontController@searchSubCategory');
 Route::get('/tags/{slug}', 'FrontController@searchTag');
+Route::get('/pagenotfound',['as' => 'notfound', 
+                                'uses' => 'FrontController@notfound']);
+
 Route::group(['prefix'=>'admin'],function(){
 	Auth::routes();
 	Route::get('/', function () {
@@ -48,6 +51,8 @@ Route::get('articles/images/{filename}',function($filename){
 	return $response;
 
 });
+
+
 
 // 
 

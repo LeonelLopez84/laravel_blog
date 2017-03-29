@@ -16,7 +16,7 @@
 
 @section('content')
 
-@include('front.partials.wrap_block')
+@include('front.partials.wrap_block',['lastArticles'=>$lastArticles])
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">

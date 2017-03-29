@@ -440,6 +440,65 @@ body {
   margin-bottom: 10px;
 }
 
+#front #body #wrap-block #main {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding: 0px;
+  height: 50vh;
+  border: 5px solid #fff;
+}
+
+#front #body #wrap-block #main a {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, transparent), color-stop(100%, rgba(0, 0, 0, 0.7)));
+  background: -webkit-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  bottom: 0px;
+  color: #fff;
+  font-weight: bolder;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  text-shadow: #333 2px 2px 2px;
+  padding: 10px;
+  height: 15vh;
+}
+
+#front #body #wrap-block #main a:hover {
+  text-decoration: none;
+}
+
+#front #body #wrap-block #side .wrap {
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding: 0px;
+  height: 25vh;
+  background-size: cover;
+  border: 5px solid #fff;
+}
+
+#front #body #wrap-block #side .wrap a {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, transparent), color-stop(100%, rgba(0, 0, 0, 0.7)));
+  background: -webkit-linear-gradient(top, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.7) 100%);
+  height: 10vh;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  bottom: 0px;
+  color: #fff;
+  font-weight: bolder;
+  text-transform: uppercase;
+  text-shadow: #333 2px 2px 2px;
+}
+
+#front #body #wrap-block #side .wrap a:hover {
+  text-decoration: none;
+}
+
 #front #body .breadcrumb {
   background-color: transparent;
 }

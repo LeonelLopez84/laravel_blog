@@ -25,6 +25,10 @@ class ComposerServiceProvider extends ServiceProvider
                         'admin.categories.edit',
                         'admin.tags.edit',
                         ],'App\Http\ViewComposers\AdminComposer');
+
+        View::composer(['front.home',
+                        'front.tag',
+                        'front.subcategory'],'App\Http\ViewComposers\BlockComposer');
     }
 
     /**

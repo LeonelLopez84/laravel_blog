@@ -103,4 +103,9 @@ class FrontController extends Controller
                 ->with('search','');
     	
     }
+
+    public function notfound()
+    {
+        return view('errors.404');    
+    }
 }
