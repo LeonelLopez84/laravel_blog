@@ -29,6 +29,18 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer(['front.home',
                         'front.tag',
                         'front.subcategory'],'App\Http\ViewComposers\BlockComposer');
+
+        View::composer(['front.home',
+                        'front.article',
+                        'front.home',
+                        'front.subcategory',
+                        'front.tag'],'App\Http\ViewComposers\SharedComposer');
+
+        View::composer(['front.home',
+                        'front.article',
+                        'front.home',
+                        'front.subcategory',
+                        'front.tag'],'App\Http\ViewComposers\VisitedComposer');
     }
 
     /**

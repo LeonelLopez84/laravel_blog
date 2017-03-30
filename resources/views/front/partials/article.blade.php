@@ -1,9 +1,6 @@
 <div class="post">
 	<div class="post-img-content">
-		@foreach($article->images as $img)
-		<img src="{{url("/articles/images/$img->name")}}" class="img-responsive" />
-			@break
-		@endforeach
+		<img src="{{url("/articles/images/".$article->images->first()->name)}}" class="img-responsive" />
 		<span class="post-title"> <b>{{$article->title}}</b>
 			<br /> <b>{{$article->category->name}}</b>
 		</span>

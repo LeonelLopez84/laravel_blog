@@ -8,8 +8,9 @@ use App\Article;
 use App\Category;
 use App\Tag;
 use Carbon\Carbon;
-use SEO;
-
+use SEOMeta;
+use OpenGraph;
+use Twitter;
 
 class FrontController extends Controller
 {
@@ -21,7 +22,6 @@ class FrontController extends Controller
     public function __construct()
     {
         Carbon::setLocale('es');
-        SEO::twitter()->setSite('@webstagemx');
     }
 
     /**
@@ -35,7 +35,19 @@ class FrontController extends Controller
         $articles=Article::SearchArticle($request->search)
                         ->where('statu_id', '=', '2')
                         ->orderBy('created_at','DESC')->paginate(6);
-    
+
+        SEOMeta::setTitle('Home Blog');
+        SEOMeta::setDescription('Blog de la pagina de la empresa');
+        SEOMeta::setCanonical(url('/'));
+
+        OpenGraph::setDescription('This is my page description');
+        OpenGraph::setTitle('Home');
+        OpenGraph::setUrl(url('/'));
+        OpenGraph::addProperty('type', 'articles');
+
+        Twitter::setTitle('Home Blog');
+        Twitter::setSite('@webstagemx');
+
         return view('front.home')
                 ->with('articles',$articles)
                  ->with('search',$request->search);
@@ -48,11 +60,17 @@ class FrontController extends Controller
         $category=Category::SearchCategory($slug)->first();
         $articles=$category->articles()->where('statu_id', '=', '2')->paginate(10);
 
-        SEO::setTitle($category->name);
-        SEO::setDescription($category->name);
-        SEO::opengraph()->setUrl(url('/categories/'.$category->slug));
-        SEO::setCanonical(url('/categories/'.$category->slug));
-        SEO::opengraph()->addProperty('type', 'categories');
+        SEOMeta::setTitle($category->name);
+        SEOMeta::setDescription($category->name);
+        SEOMeta::setCanonical(url('/categories/'.$category->upcategory->slug.'/'.$category->slug));
+
+        OpenGraph::setDescription($category->name);
+        OpenGraph::setTitle($category->name);
+        OpenGraph::setUrl(url('/categories/'.$category->upcategory->slug.'/'.$category->slug));
+        OpenGraph::addProperty('type', 'Categories');
+
+        Twitter::setTitle("Blog Laravel > {$category->upcategory->name} > {$category->name}");
+        Twitter::setSite('@webstagemx');
 
         return view('front.subcategory')
                 ->with('articles',$articles)
@@ -66,12 +84,18 @@ class FrontController extends Controller
         $articles=$tag->articles()
                         ->where('statu_id', '=', '2')
                         ->paginate(10);
-        
-        SEO::setTitle($tag->name);
-        SEO::setDescription($tag->name);
-        SEO::opengraph()->setUrl(url('/tags/'.$tag->slug));
-        SEO::setCanonical(url('/tags/'.$tag->slug));
-        SEO::opengraph()->addProperty('type', 'tags');
+    
+        SEOMeta::setTitle($tag->name);
+        SEOMeta::setDescription($tag->name);
+        SEOMeta::setCanonical(url('/categories/'.$tag->name));
+
+        OpenGraph::setDescription($tag->name);
+        OpenGraph::setTitle($tag->name);
+        OpenGraph::setUrl(url('/categories/'.$tag->name));
+        OpenGraph::addProperty('type', 'Tags');
+
+        Twitter::setTitle('Blog Laravel > '.$tag->name);
+        Twitter::setSite('@webstagemx');
         
         return view('front.tag')
                 ->with('articles',$articles)
@@ -90,12 +114,25 @@ class FrontController extends Controller
                             ->inRandomOrder()
                             ->take(3)->get();
 
-        SEO::setTitle($article->title);
-        SEO::setDescription($article->title);
-        SEO::opengraph()->setUrl(url('/articles/'.$article->slug));
-        SEO::setCanonical(url('/articles/'.$article->slug));
-        SEO::opengraph()->addProperty('type', 'articles');
-        SEO::twitter()->setSite($article->user->twitter_user);
+        SEOMeta::setTitle($article->title);
+        SEOMeta::setDescription($article->preview);
+        SEOMeta::addMeta('article:published_time', $article->created_at, 'property');
+        SEOMeta::addMeta('article:section', $article->category->name, 'property');
+        SEOMeta::addKeyword(['key1', 'key2', 'key3']);
+
+        OpenGraph::setDescription($article->preview);
+        OpenGraph::setTitle($article->title);
+        OpenGraph::setUrl('http://current.url.com');
+        OpenGraph::addProperty('type', 'article');
+        OpenGraph::addProperty('locale', 'es-mx');
+        OpenGraph::addProperty('locale:alternate', ['es-mx', 'en-us']);
+
+        foreach($article->images as $image){
+            OpenGraph::addImage(url("/articles/images/$image->name"));
+        }
+
+        Twitter::setTitle('Blog Laravel > '.$article->title);
+        Twitter::setSite('@webstagemx');
 
  		return view('front.article')
                 ->with('article',$article)

@@ -3,7 +3,7 @@
 }
 
 .side-menu {
-  position: fixed;
+  position: fixed; 
   width: 300px;
   height: 100%;
   background-color: $primary_color;
@@ -359,7 +359,7 @@
           a,a[aria-expanded='false']{
             color:$font_color;    
             &:hover, &:focus{
-            background-color:$secundary_color;
+            background-color:$hover_color;
             }
           }
         }

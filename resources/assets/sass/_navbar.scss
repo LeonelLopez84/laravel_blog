@@ -4,7 +4,7 @@
 			background-color:$primary_color;
 			.open{
 				.dropdown-toggle{
-					background-color:$secundary_color;
+					background-color:$hover_color;
 				}
 			}
 			li{
@@ -13,7 +13,7 @@
 				}
 				a{
 					&:hover{
-						background-color:$secundary_color;
+						background-color:$hover_color;
 					}
 					color:$font_color;		
 				}

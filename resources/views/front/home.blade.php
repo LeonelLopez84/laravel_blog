@@ -16,7 +16,7 @@
 
 @section('content')
 
-@include('front.partials.wrap_block',['lastArticles'=>$lastArticles])
+@include('front.partials.head_block',['lastArticles'=>$lastArticles])
 
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -46,7 +46,8 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
-        aside
+       @include("front.partials.visited")
+       @include("front.partials.shared")
     </div>
 </div>
 

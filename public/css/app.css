@@ -32,6 +32,7 @@ body {
 #front {
   /* Main body section */
   /* small screen */
+  /*recent-post-col////////////////////*/
 }
 
 #front .badge {
@@ -592,6 +593,60 @@ body {
 
 #front .social-buttons .gplus {
   color: #d43e34;
+}
+
+#front .sidebar-widget {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  /* .title-widget-sidebar:after {
+        border-bottom: 2px solid #f1c40f;
+        width: 150px;
+        display: block;
+        position: absolute;
+        content: '';
+        padding-bottom: 10px;
+    }*/
+}
+
+#front .sidebar-widget .title-widget-sidebar {
+  background-color: #ec1a3a;
+  font-size: 14pt;
+  color: #fff;
+  border-bottom: 2px solid #e5ebef;
+  margin-bottom: 15px;
+  padding: 10px;
+  margin-top: 0px;
+}
+
+#front .sidebar-widget .recent-post {
+  width: 100%;
+  height: 80px;
+  list-style-type: none;
+}
+
+#front .sidebar-widget .post-img img {
+  width: 100px;
+  height: 70px;
+  float: left;
+  margin-right: 15px;
+  border: 5px solid #16A085;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#front .sidebar-widget .recent-post a {
+  text-decoration: none;
+  color: #34495E;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#front .sidebar-widget .post-img, #front .sidebar-widget .recent-post a:hover {
+  color: #F39C12;
+}
+
+#front .sidebar-widget .post-img img:hover {
+  border: 5px solid #F39C12;
 }
 
 #front .full {
