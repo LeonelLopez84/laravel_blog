@@ -141,6 +141,23 @@ class FrontController extends Controller
     	
     }
 
+    public function shared($slug)
+    {
+        $Article = Article::where('slug','=',$slug)->first();
+        $Article->shares = ($Article->shares + 1);
+        $Article->save();
+        return response()->json( $Article->shares);
+    } 
+
+    public function visited($slug)
+    {
+        $Article = Article::where('slug','=',$slug)->first();
+        $Article->visits= ($Article->visits + 1);
+        $Article->save();
+        return response()->json( $Article->visits);
+        
+    } 
+
     public function notfound()
     {
         return view('errors.404');    

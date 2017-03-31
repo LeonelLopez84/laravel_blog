@@ -13,8 +13,8 @@ Route::get('/',['as' => 'home',
 				'uses' => 'FrontController@index']);
 Route::get('/articles/{slug}',['as' => 'articles', 
 								'uses' => 'FrontController@viewArticle']);
-Route::get('/articles/addshare/{slug}',['as' => 'articles.share', 
-                                  'uses' => 'FrontController@addShare']);
+Route::get('/articles/shared/{slug}','FrontController@shared');
+Route::get('/articles/visited/{slug}','FrontController@visited');
 Route::get('/categories/{padre}/{slug}','FrontController@searchSubCategory');
 Route::get('/tags/{slug}', 'FrontController@searchTag');
 Route::get('/pagenotfound',['as' => 'notfound', 
@@ -30,6 +30,8 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::resource('categories','CategoriesController');
 	Route::resource('tags','TagsController');
 	Route::resource('articles','ArticlesController');
+    Route::post('articles/shared','ArticlesController@shared');
+    
     Route::resource('images','ImagesController');
     Route::post('/articles/api', 'ArticlesController@api');
 });

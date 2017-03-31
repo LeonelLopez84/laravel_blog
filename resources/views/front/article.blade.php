@@ -22,7 +22,8 @@
 					<div class="panel-body img-body" >
 						<p class="text-right">Por:<a href="https://twitter.com/{{$article->user->twitter_user}}">{{$article->user->twitter_user}}</a></p>
 						<p class="text-right">{{$article->created_at->format('l jS \\of F Y')}}</p>
-						@include('front.partials.share', [
+						@include('front.partials.socialmedia', [
+							'slug'=>$article->slug,
 						    'url' => request()->fullUrl(),
 						    'description' => $article->title,
 						    'image' => url("/articles/images/".$article->images->first()->name)
@@ -75,11 +76,11 @@
 	
         </div>
     </div>
-</div>
-<div class="row">
+
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+      	@include("front.partials.visited")
+       	@include("front.partials.shared")
     </div>
-</div>
-    
+</div>    
 @endsection
 

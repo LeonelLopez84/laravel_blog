@@ -39,7 +39,8 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-4 col-md-4 col-md-4">
-        aside
+       @include("front.partials.visited")
+       @include("front.partials.shared")
     </div>
 </div>
 

@@ -5,13 +5,13 @@
               @foreach($sharedArticles as $article)
                <li class="recent-post">
                    <div class="post-img">
-                       <img src="https://lh3.googleusercontent.com/-ndZJOGgvYQ4/WM1ZI8dH86I/AAAAAAAADeo/l67ZqZnRUO8QXIQi38bEXuxqHfVX0TV2gCJoC/w424-h318-n-rw/thumbnail8.jpg" class="img-responsive"></div>
+                       <img src="{{url('/articles/images/'.$article->images->first()->name)}}" class="img-responsive"></div>
                    <a href="#">
                        <h5>{{$article->title}}</h5>
                    </a>
                    <p>
                        <small> <i class="fa fa-calendar" data-original-title="" title=""></i>
-                           30 Juni 2014
+                           {{$article->created_at->toFormattedDateString() }}
                        </small>
                    </p>
                </li>

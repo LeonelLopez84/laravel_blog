@@ -60,7 +60,6 @@ $(document).on('click', "button[name='image-delete']",function(event){
 
     event.preventDefault();
     var id=$(this).attr('id');
-    console.log(id);
     var element=$(this);
    $.ajax({
         url:'/admin/images/'+id,
@@ -83,6 +82,62 @@ $(document).on('click', "button[name='image-delete']",function(event){
     });
     
     return false;
-});
+    });
+
+    $(document).on('click', ".social-buttons > a",function(event){
+
+        event.preventDefault();
+
+        alert("hola");
+
+        var slug=$(this).attr('name');
+
+        $.ajax({
+            url:'/articles/shared/'+slug,
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr("content")},
+            dataType: 'json'
+        })
+        .done(function(success) {
+            console.log("success");
+        })
+        .fail(function(error) {
+            console.log("error");
+            console.log(error.responseText);
+        })
+        .always(function() {
+            console.log("complete");
+        });
+
+    return false;
+    });
+
+    $(document).ready(function(){
+
+
+        //var slug=$(".social-buttons").children('a').attr('name');
+
+        console.log("hola");
+
+        /*$.ajax({
+            url:'/articles/shared/'+slug,
+            type: 'GET',
+            headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr("content")},
+            dataType: 'json'
+        })
+        .done(function(success) {
+            console.log("success");
+        })
+        .fail(function(error) { 
+            console.log("error");
+            console.log(error.responseText);
+        })
+        .always(function() {
+            console.log("complete");
+        });*/   
+
+        return false;
+    });
+
 
 });
