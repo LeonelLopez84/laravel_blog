@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Article;
 use App\Category;
 use App\Tag;
+use App\Subscription;
 use Carbon\Carbon;
 use SEOMeta;
 use OpenGraph;
@@ -58,6 +59,9 @@ class FrontController extends Controller
     public function searchSubCategory($padre,$slug)
     {
         $category=Category::SearchCategory($slug)->first();
+
+        if(empty($category)) abort(404);
+
         $articles=$category->articles()->where('statu_id', '=', '2')->paginate(10);
 
         SEOMeta::setTitle($category->name);
@@ -81,6 +85,9 @@ class FrontController extends Controller
      public function searchTag($slug)
     {
         $tag=Tag::SearchTag($slug)->first();
+
+        if(empty($tag)) abort(404);
+
         $articles=$tag->articles()
                         ->where('statu_id', '=', '2')
                         ->paginate(10);
@@ -108,6 +115,8 @@ class FrontController extends Controller
     public function viewArticle($slug)
     {
     	$article = Article::where('slug','=',$slug)->first();
+
+        if(empty($article)) abort(404);
 
         $related=Article::where('category_id','=',$article->category_id)
                             ->where('statu_id', '=', '2')
@@ -144,6 +153,7 @@ class FrontController extends Controller
     public function shared($slug)
     {
         $Article = Article::where('slug','=',$slug)->first();
+        if(empty($Article)) abort(404);
         $Article->shares = ($Article->shares + 1);
         $Article->save();
         return response()->json( $Article->shares);
@@ -152,14 +162,18 @@ class FrontController extends Controller
     public function visited($slug)
     {
         $Article = Article::where('slug','=',$slug)->first();
+        if(empty($Article)) abort(404);
         $Article->visits= ($Article->visits + 1);
         $Article->save();
         return response()->json( $Article->visits);
         
     } 
 
-    public function notfound()
+    public function subscribe(Request $request)
     {
-        return view('errors.404');    
-    }
+        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+            $Subscription = new Subscription(['email'=>$request->email]);
+            $Subscription->save();
+        }
+    } 
 }

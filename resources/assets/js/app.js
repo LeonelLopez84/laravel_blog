@@ -83,7 +83,7 @@ $(document).on('click', "button[name='image-delete']",function(event){
     
     return false;
     });
-
+//////------------------------------------------------
     $(document).on('click', ".social-buttons > a",function(event){
 
         event.preventDefault();
@@ -111,7 +111,7 @@ $(document).on('click', "button[name='image-delete']",function(event){
 
     return false;
     });
-
+//////------------------------------------------------
     $(".social-buttons").ready(function(){
 
         var slug=$(".social-buttons").children('a:first').attr('name');
@@ -139,5 +139,36 @@ $(document).on('click', "button[name='image-delete']",function(event){
         return false;
     });
 
+    $(document).on('click',"#subscribe",function(event){
+
+        var email=$("input[name='email']").val();
+        var exp = new RegExp(/^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/);
+
+        if (!exp.test(email)){
+            alert("Revisa tu correo");
+        }else{
+            $.ajax({
+                url:'/subscribe',
+                type: 'POST',
+                headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr("content")},
+                dataType: 'HTML',
+                data:{email:email}
+            })
+            .done(function(success) {
+                console.log("success");
+                $("input[name='email']").val('');
+                $("#subscribe").html('Gracias').prop('disable', 'disabled');
+            })
+            .fail(function(error) { 
+                console.log("error");
+                console.log(error.responseText);
+            })
+            .always(function() {
+                console.log("complete");
+            });
+        }
+
+         return false;
+        });
 
 });

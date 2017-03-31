@@ -43,8 +43,8 @@
                     <ul>
                         <li>
                             <div class="input-append newsletter-box text-center">
-                                <input type="text" class="full text-center" placeholder="Email ">
-                                <button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
+                                <input type="email" name="email" class="full text-center form-control" placeholder="Email ">
+                                <button class="btn  bg-gray" id="subscribe" type="button"> Subscribete <i class="fa fa-long-arrow-right"> </i> </button>
                             </div>
                         </li>
                     </ul>

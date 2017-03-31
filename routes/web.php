@@ -9,16 +9,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',['as' => 'home', 
-				'uses' => 'FrontController@index']);
-Route::get('/articles/{slug}',['as' => 'articles', 
-								'uses' => 'FrontController@viewArticle']);
+Route::get('/',['as' => 'home','uses' => 'FrontController@index']);
+Route::get('/articles/{slug}',['as' => 'articles','uses' => 'FrontController@viewArticle']);
 Route::get('/articles/shared/{slug}','FrontController@shared');
 Route::get('/articles/visited/{slug}','FrontController@visited');
 Route::get('/categories/{padre}/{slug}','FrontController@searchSubCategory');
 Route::get('/tags/{slug}', 'FrontController@searchTag');
-Route::get('/pagenotfound',['as' => 'notfound', 
-                                'uses' => 'FrontController@notfound']);
+Route::post('/subscribe','FrontController@subscribe');
 
 Route::group(['prefix'=>'admin'],function(){
 	Auth::routes();
@@ -36,22 +33,24 @@ Route::group(['prefix'=>'admin'],function(){
     Route::post('/articles/api', 'ArticlesController@api');
 });
 
+Route::get('images/{filename}',function($filename){
+    $path=storage_path("app/public/images/$filename");
+    if(!\File::exists($path)) abort(404);
+    $file = \File::get($path);
+    $type =\File::mimeType($path);
+    $response = Response::make($file,200);
+    $response->header("Content-Type",$type);
+    return $response;
+});
+
 Route::get('articles/images/{filename}',function($filename){
-
 	$path=storage_path("app/public/images/$filename");
-
 	if(!\File::exists($path)) abort(404);
-
 	$file = \File::get($path);
-
 	$type =\File::mimeType($path);
-
 	$response = Response::make($file,200);
-
 	$response->header("Content-Type",$type);
-
 	return $response;
-
 });
 
 
