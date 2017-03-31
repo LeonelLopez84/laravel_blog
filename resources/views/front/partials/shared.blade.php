@@ -1,22 +1,19 @@
-   <div class="sidebar-widget">
-       <h2 class="title-widget-sidebar">// LO MAS COMPARTIDO</h2>
-       <div class="content-widget-sidebar">
-           <ul>
-              @foreach($sharedArticles as $article)
-               <li class="recent-post">
-                   <div class="post-img">
-                       <img src="{{url('/articles/images/'.$article->images->first()->name)}}" class="img-responsive"></div>
-                   <a href="#">
-                       <h5>{{$article->title}}</h5>
-                   </a>
-                   <p>
-                       <small> <i class="fa fa-calendar" data-original-title="" title=""></i>
-                           {{$article->created_at->toFormattedDateString() }}
-                       </small>
-                   </p>
-               </li>
-               <hr> 
-               @endforeach  
-           </ul>
-       </div>
-   </div>
+<div class="sidebar-widget">
+  <div class="list-group">
+    <a href="#" class="title list-group-item">LO MAS COMPARTIDO</a>
+        @foreach($sharedArticles as $article)
+          <a class="list-group-item" href="{{route('articles',$article->slug) }}">
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 thumb" style="background-image:url({{url('/articles/images/'.$article->images->first()->name)}});">
+              </div>
+              <div class="col-xs-8 col-sm-8 col-md-8">
+                <h5>{{$article->title}}</h5>
+                <small> <i class="fa fa-calendar" data-original-title="" title=""></i>
+                  {{$article->created_at->toFormattedDateString() }}
+                </small>
+              </div>
+            </div>
+          </a>
+        @endforeach  
+    </div>
+</div>

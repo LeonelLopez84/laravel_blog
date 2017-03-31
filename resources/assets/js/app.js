@@ -112,29 +112,29 @@ $(document).on('click', "button[name='image-delete']",function(event){
     return false;
     });
 
-    $(document).ready(function(){
+    $(".social-buttons").ready(function(){
 
+        var slug=$(".social-buttons").children('a:first').attr('name');
 
-        //var slug=$(".social-buttons").children('a').attr('name');
-
-        console.log("hola");
-
-        /*$.ajax({
-            url:'/articles/shared/'+slug,
-            type: 'GET',
-            headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr("content")},
-            dataType: 'json'
-        })
-        .done(function(success) {
-            console.log("success");
-        })
-        .fail(function(error) { 
-            console.log("error");
-            console.log(error.responseText);
-        })
-        .always(function() {
-            console.log("complete");
-        });*/   
+        if(slug!=null || slug!=undefined){
+        
+            $.ajax({
+                url:'/articles/visited/'+slug,
+                type: 'GET',
+                headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr("content")},
+                dataType: 'json'
+            })
+            .done(function(success) {
+                console.log("success");
+            })
+            .fail(function(error) { 
+                console.log("error");
+                console.log(error.responseText);
+            })
+            .always(function() {
+                console.log("complete");
+            });
+        }
 
         return false;
     });

@@ -73,7 +73,13 @@ body{
 
 		.breadcrumb{
 				background-color:transparent;
+				margin-bottom: 10px;
 			}
+		.lead{
+			background-color:$secundary_color;
+			color:$font_color;
+			padding:10px;
+		}
 
 		.section{
 			 	.panel-default{
