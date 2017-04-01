@@ -1,3 +1,4 @@
+@if(isset($lastArticles[3]))
 <div class="row" id="wrap-block">
     <div class="col-sm-12 col-md-8 col-lg-8" id="main" style="background-image:url({{url('/articles/images/'.$lastArticles[0]->images->first()->name)}})">
         <a href="{{url('articles/'.$lastArticles[0]->slug)}}">{{$lastArticles[0]->title}}</a>
@@ -13,3 +14,4 @@
     	</div>
     </div>
 </div>
+@endif

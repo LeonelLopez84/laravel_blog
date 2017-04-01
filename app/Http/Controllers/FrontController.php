@@ -171,9 +171,14 @@ class FrontController extends Controller
 
     public function subscribe(Request $request)
     {
-        if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            $Subscription = new Subscription(['email'=>$request->email]);
-            $Subscription->save();
+        try {
+            if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
+                $Subscription = new Subscription(['email'=>$request->email]);
+                $Subscription->save();
+            }
+            return 1;
+        }catch(\Exception $e){
+            return;
         }
     } 
 }
