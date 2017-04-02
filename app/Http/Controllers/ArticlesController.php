@@ -7,7 +7,6 @@ use App\Http\Requests\ArticleRequest;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Str;
 use App\Article;
-use App\Tag;
 use App\Category;
 use App\Image;
 use App\Statu;
@@ -61,7 +60,6 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        $tags=Tag::orderBy('name','ASC')->pluck('name','id');
         $categories=[];
      
         $categories=Category::where('category_id', '=', '0')
@@ -75,8 +73,7 @@ class ArticlesController extends Controller
                             
         //dd($categories);
         return view("admin.articles.create")
-                ->with('categories',$categories)
-             ->with('tags',$tags);
+                ->with('categories',$categories);
     }
 
     /**
@@ -97,7 +94,7 @@ class ArticlesController extends Controller
         $article->user_id= \Auth::user()->id;
         $article->save();
 
-        $article->tags()->sync($request->tags);
+        $article->tag($request->tags);
 
         if($request->file("image")){
 
@@ -136,7 +133,14 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         $article=Article::find($id);
-        $tags=Tag::orderBy('name','ASC')->pluck('name','id');
+        
+        $tags=array();
+        foreach($article->tags as $val){
+            $tags[]=$val->name;
+        }
+        
+        $selected_tags=implode(',',$tags);
+
         $categories=Category::where('category_id', '=', '0')
                             ->orderBy('name','ASC')
                             ->get()
@@ -145,12 +149,10 @@ class ArticlesController extends Controller
                             })->keyBy('name')->map(function($categories) {
                                 return $categories['categories'];
                             });
-        $selected_tags=$article->tags->pluck('id')->toArray();
 
         return view('admin.articles.edit')
                 ->with('article',$article)
                 ->with('categories',$categories)
-                ->with('tags',$tags)
                 ->with('selected_tags',$selected_tags);
     }
 
@@ -175,7 +177,7 @@ class ArticlesController extends Controller
         $article->user_id = \Auth::user()->id;
         $article->save();
 
-        $article->tags()->sync($request->tags);
+        $article->setTags($request->tags);
 
         if($request->file("image")){
 

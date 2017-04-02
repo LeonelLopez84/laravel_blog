@@ -2,9 +2,9 @@
 
 @section("title","Blog Laravel")
 
- @section('breadcrumbs', Breadcrumbs::render('tag',$tag))
+ @section('breadcrumbs', Breadcrumbs::render('tag',$slug))
     @section('home_title')
-        {{$tag->name}}
+        {{$slug}}
     @endsection
 
 @section('content')

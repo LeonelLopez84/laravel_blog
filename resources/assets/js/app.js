@@ -2,9 +2,35 @@ $(document).on('submit', '#delete-form', function(event) {
 	return confirm("¿Desea borrar el dato?");
 });
 
-$(".select-tag").chosen();
+$('.editor').trumbowyg();  
+    
+if($("#article").length){
+    
+    var citynames = new Bloodhound({
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+      prefetch: {
+        url: 'http://'+window.location.hostname+'/admin/tags',
+        filter: function(list) {
+          return $.map(list, function(cityname) {
+            return { name: cityname }; });
+        }
+      }
+    });
 
-$('.editor').trumbowyg();   
+    citynames.initialize();
+
+    $("input[name='tags']").tagsinput({
+      typeaheadjs: {
+        name: 'tags',
+        displayKey: 'name',
+        valueKey: 'name',
+        source: citynames.ttAdapter()
+      }
+    });
+}
+
+ 
 
 $(function () {
     $('.navbar-toggle').click(function () {

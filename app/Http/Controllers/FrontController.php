@@ -84,31 +84,31 @@ class FrontController extends Controller
 
      public function searchTag($slug)
     {
-        $tag=Tag::SearchTag($slug)->first();
-
-        if(empty($tag)) abort(404);
-
-        $articles=$tag->articles()
+        $articles=Article::withTag($slug)
                         ->where('statu_id', '=', '2')
                         ->paginate(10);
-    
-        SEOMeta::setTitle($tag->name);
-        SEOMeta::setDescription($tag->name);
-        SEOMeta::setCanonical(url('/categories/'.$tag->name));
 
-        OpenGraph::setDescription($tag->name);
-        OpenGraph::setTitle($tag->name);
-        OpenGraph::setUrl(url('/categories/'.$tag->name));
+        if(count($articles)==0) abort(404);
+
+    
+        SEOMeta::setTitle($slug);
+        SEOMeta::setDescription($slug);
+        SEOMeta::setCanonical(url('/tags/'.$slug));
+
+        OpenGraph::setDescription($slug);
+        OpenGraph::setTitle($slug);
+        OpenGraph::setUrl(url('/tags/'.$slug));
         OpenGraph::addProperty('type', 'Tags');
 
-        Twitter::setTitle('Blog Laravel > '.$tag->name);
+        Twitter::setTitle('Blog Laravel > '.$slug);
         Twitter::setSite('@webstagemx');
         
         return view('front.tag')
                 ->with('articles',$articles)
-                ->with('padre','Tag')
-                ->with('tag', $tag)
+                ->with('padre','')
+                ->with('slug', $slug)
                 ->with('search','');
+                
 
     }
 

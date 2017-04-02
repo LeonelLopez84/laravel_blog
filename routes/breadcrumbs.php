@@ -13,11 +13,11 @@ Breadcrumbs::register('search', function($breadcrumbs,$search)
     $breadcrumbs->push($search); 
 });
 
-Breadcrumbs::register('tag', function($breadcrumbs,$tag)
+Breadcrumbs::register('tag', function($breadcrumbs,$slug)
 {
     $breadcrumbs->parent('home');
     $breadcrumbs->push('Tags');
-    $breadcrumbs->push($tag->name,url('tags'.$tag->slug));
+    $breadcrumbs->push($slug,url('tags'.$slug));
 });
 
 Breadcrumbs::register('category', function($breadcrumbs,$padre)

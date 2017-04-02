@@ -40,7 +40,7 @@ class ArticleRequest extends FormRequest
                     'category_id'=> 'required',
                     'preview'    => 'min:10|required',
                     'content'    => 'min:10|required',
-                    'tags'       => 'required|array|min:1',
+                    'tags'       => 'required|min:1',
                     'image'      => 'required|image'
                 ];
             }
@@ -52,7 +52,7 @@ class ArticleRequest extends FormRequest
                    'category_id'=> 'required',
                    'preview'    => 'min:10|required',
                    'content'    => 'min:10|required',
-                   'tags'       => 'required|array|min:1',
+                   'tags'       => 'required|min:1',
                    'statu_id'  => 'required'
                 ];
             }

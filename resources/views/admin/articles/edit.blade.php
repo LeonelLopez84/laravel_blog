@@ -11,7 +11,7 @@
 			<div class="panel panel-default" id="article">
 			  <div class="panel-heading">@yield('title')</div>
 			  <div class="panel-body">
-			{{ Form::open(['route' => ['articles.update',$article->id],"method"=>"PUT",'files'=>true]) }}
+			{{ Form::open(['route' => ['articles.update',$article->id],"method"=>"PUT",'files'=>true,'id'=>'article']) }}
 
 				<div class="form-group">
 					{{Form::label('title','Titulo')}}
@@ -35,7 +35,7 @@
 
 				<div class="form-group">
 					{{Form::label('tags','Tag')}}
-					{{Form::select('tags[]',$tags, $selected_tags,['class'=>'form-control select-tag','multiple','required'] ) }}
+					{{Form::text('tags',  $selected_tags,['class'=>'form-control','required','data-role'=>"tagsinput"] ) }}
 				</div>
 
 				<div class="form-group">

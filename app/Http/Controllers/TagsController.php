@@ -3,17 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\TagsRequest;
-use Laracasts\Flash\Flash;
-use Illuminate\Support\Str;
-use App\Tag;
+use App\Article;
 
 class TagsController extends Controller
 {
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
     /**
      * Display a listing of the resource.
      *
@@ -21,13 +14,21 @@ class TagsController extends Controller
      */
     public function index(Request $request)
     {   
-        $tags=Tag::search($request->name)
-                    ->orderBy('name','ASC')
-                    ->paginate(10);
-        return view('admin.tags.index')
-                        ->with('tags',$tags)
-                        ->with('name',$request->name);
+        $tags=[];
+        foreach(Article::allTags()->get() as $val)
+        {
+            array_push($tags,$val->name);
+        }
+
+        return response()->json($tags);
     }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
 
     /**
      * Show the form for creating a new resource.

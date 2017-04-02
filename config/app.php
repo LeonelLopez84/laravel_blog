@@ -172,6 +172,7 @@ return [
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
         Roumen\Sitemap\SitemapServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
+        Cartalyst\Tags\TagsServiceProvider::class,
 
         //
 
@@ -240,7 +241,8 @@ return [
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         //'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
-        'Datatables'=>Yajra\Datatables\Facades\Datatables::class
+        'Datatables'=>Yajra\Datatables\Facades\Datatables::class,
+        'Tags'=>Cartalyst\Tags\TagsServiceProvider::class
     ],
 
 ];

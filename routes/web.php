@@ -26,11 +26,10 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::resource('users','UsersController');
 	Route::resource('categories','CategoriesController');
 	Route::resource('tags','TagsController');
-	Route::resource('articles','ArticlesController');
-    Route::post('articles/shared','ArticlesController@shared');
-    
+	Route::resource('articles','ArticlesController');    
     Route::resource('images','ImagesController');
     Route::post('/articles/api', 'ArticlesController@api');
+    
 });
 
 Route::get('images/{filename}',function($filename){
@@ -81,7 +80,7 @@ Route::get('sitemap', function(){
 
          }
 
-         $tags = App\Tag::orderBy('created_at', 'desc')->get();
+         $tags = App\Article::allTags()->get();
          foreach ($tags as $tag)
          {
 			$sitemap->add(URL::to('/tags/'.$tag->slug), $tag->updated_at,'0.9','daily');

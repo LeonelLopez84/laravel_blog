@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{asset('bower_components/trumbowyg/dist/ui/trumbowyg.min.css')}}">    
     <link rel="stylesheet" type="text/css" href="{{ url('https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ url('https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput-typeahead.css') }}" />
+    
 
 
     <!-- CSRF Token -->
@@ -48,6 +51,8 @@
     <script src="{{ url('https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ url('https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ url('https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url('bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+    <script src="{{ url('bower_components/typeahead.js/dist/typeahead.bundle.min.js') }}"></script>
     
 	<script src="{{asset('js/app.js') }}"></script>
     <script>

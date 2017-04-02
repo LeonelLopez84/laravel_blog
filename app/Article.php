@@ -2,10 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent;
 use Illuminate\Database\Eloquent\Model;
 
-class Article extends Model
+
+use Cartalyst\Tags\TaggableTrait;
+use Cartalyst\Tags\TaggableInterface;
+
+class Article extends Model implements TaggableInterface
 {
+    use TaggableTrait;
+
     protected $table="articles";
 
     protected $fillable=["title","content",'slug','shares','visits',"category_id","user_id",'statu_id'];
@@ -30,10 +37,6 @@ class Article extends Model
     	return $this->hasMany('App\Image');
     }
 
-    public function tags()
-    {
-    	return $this->belongsToMany('App\Tag');
-    }
 
     public function scopeSearch($query, $title)
     {

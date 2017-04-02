@@ -3,7 +3,6 @@ namespace App\Http\ViewComposers;
 
 use Illuminate\Contracts\View\View;
 use App\Category;
-use App\Tag;
 
 class NavbarComposer
 {
@@ -19,11 +18,8 @@ class NavbarComposer
                             })->keyBy('name')->map(function($categories) {
                                 return $categories['categories'];
                             });
-		$tags = Tag::where('statu_id', '=', '2')
-                       ->orderBy('name','ASC')->get();
 
-		$view->with('categories',$categories)
-			->with('tags',$tags);
+		$view->with('categories',$categories);
 	}
 }
 
